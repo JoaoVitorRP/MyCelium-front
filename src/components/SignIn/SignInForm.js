@@ -4,7 +4,7 @@ import { StyledForm } from '../Form/Form';
 import { Input } from '../Form/Input';
 import { Label } from '../Form/Label';
 
-export default function Form() {
+export default function SignInForm() {
   return (
     <StyledForm>
       <Label for="email">Email</Label>

@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import { ScreenRedirect } from '../../components/Auth/ScreenRedirect';
-import Form from '../../components/SignIn/Form';
+import SignInForm from '../../components/SignIn/SignInForm';
 import Auth from '../../layouts/Auth';
 
-export default function Signin() {
+export default function SignIn() {
   return (
     <Auth>
       <h1>Fazer login:</h1>
-      <Form />
+      <SignInForm />
       <ScreenRedirect>
-        Ainda não possui uma conta? <Link to="/signup">Cadastre-se!</Link>
+        Ainda não possui uma conta? <Link to="/sign-up">Cadastre-se!</Link>
       </ScreenRedirect>
     </Auth>
   );
