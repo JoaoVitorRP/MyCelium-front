@@ -15,20 +15,21 @@ export default function ImageContainer() {
 }
 
 const ImgContainer = styled.div`
-  width: 65%;
+  width: calc(65% - 10px);
   height: 100%;
   border-radius: 50px;
   background-image: url(${mushroomGirl});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin-left: 10px;
+  margin-left: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `;
 
 const CopyrightInfo = styled.footer`
   position: fixed;
-  bottom: 20px;
-  right: 60px;
+  bottom: 30px;
+  right: 70px;
 
   font-size: 12px;
   color: #8e8e8e;

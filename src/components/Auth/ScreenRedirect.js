@@ -12,6 +12,8 @@ export const ScreenRedirect = styled.div`
 
   a {
     font-weight: 700;
+    line-height: 20px;
     color: ${FONT_BLACK};
+    white-space: nowrap;
   }
 `;
