@@ -4,14 +4,14 @@ const { LIGHT_GRAY } = COLORS;
 
 export const Input = styled.input`
   width: 100%;
-  height: 35px;
+  height: 40px;
   padding: 0px 10px;
   border: 1px solid ${LIGHT_GRAY};
   border-radius: 10px;
   margin-bottom: 25px;
 
   font-family: 'Roboto';
-  font-size: 16px;
+  font-size: 17px;
 
   ::placeholder {
     font-style: italic;
