@@ -7,10 +7,10 @@ import { Label } from '../Form/Label';
 export default function SignInForm() {
   return (
     <StyledForm>
-      <Label for="email">Email</Label>
+      <Label htmlFor="email">Email</Label>
       <Input id="email" placeholder="Insira seu email" required />
 
-      <Label for="password">Senha</Label>
+      <Label htmlFor="password">Senha</Label>
       <Input type="password" id="password" placeholder="Insira sua senha" required />
 
       <StyledButton type="submit" disabled={false}>
