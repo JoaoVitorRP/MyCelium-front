@@ -10,12 +10,23 @@ export default function SignUp() {
   const [pageNumber, setPageNumber] = useState(1);
   const [userData, setUserData] = useState({
     email: '',
+    user: '',
     name: '',
     password: '',
+    confirmPassword: '',
   });
 
   function handleInputChange(e) {
     const { name, value } = e.target;
+
+    if (name === 'user' && (!/^[a-z.0-9]*$/.test(value) || value === '.' || value.includes('..'))) {
+      return;
+    }
+
+    if (name === 'name' && (!/^[\sA-Za-z0-9]*$/.test(value) || value === ' ' || value.includes('  '))) {
+      return;
+    }
+
     setUserData({ ...userData, [name]: value });
   }
 

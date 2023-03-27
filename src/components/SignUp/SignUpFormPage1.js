@@ -1,9 +1,12 @@
 import { IconContext } from 'react-icons';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import styled from 'styled-components';
 import { Button } from '../Form/Button';
 import { StyledForm } from '../Form/Form';
 import { Input } from '../Form/Input';
 import { Label } from '../Form/Label';
+import { COLORS } from '../../services/Constants/colors';
+const { FONT_BLACK } = COLORS;
 
 export default function SignUpFormPage1({ userData, handleInputChange, setPageNumber }) {
   return (
@@ -19,11 +22,28 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
         required
       />
 
+      <Label htmlFor="user">Usuário:</Label>
+      <UserInputContainer>
+        @
+        <Input
+          id="user"
+          name="user"
+          placeholder="user.exemplo"
+          minLength={3}
+          maxLength={16}
+          value={userData.user}
+          onChange={handleInputChange}
+          required
+        />
+      </UserInputContainer>
+
       <Label htmlFor="name">Nome:</Label>
       <Input
         id="name"
         name="name"
-        placeholder="Insira seu nome de usuário"
+        placeholder="Nome de usuário"
+        minLength={3}
+        maxLength={30}
         value={userData.name}
         onChange={handleInputChange}
         required
@@ -38,3 +58,19 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
     </StyledForm>
   );
 }
+
+const UserInputContainer = styled.div`
+  margin-bottom: 25px;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 25px;
+  font-weight: 700;
+  color: ${FONT_BLACK};
+
+  input {
+    margin-left: 5px;
+    margin-bottom: 0px;
+  }
+`;

@@ -10,13 +10,12 @@ import { COLORS } from '../../services/Constants/colors';
 const { RED } = COLORS;
 
 export default function SignUpFormPage2({ userData, handleInputChange, setPageNumber }) {
-  const [confirmedPassword, setConfirmedPassword] = useState('');
   const [error, setError] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (confirmedPassword !== userData.password) {
+    if (userData.confirmPassword !== userData.password) {
       return setError(true);
     }
 
@@ -31,17 +30,20 @@ export default function SignUpFormPage2({ userData, handleInputChange, setPageNu
         id="password"
         name="password"
         placeholder="Insira sua senha"
+        minLength={6}
         value={userData.password}
         onChange={handleInputChange}
         required
       />
 
-      <Label htmlFor="passwordConfirm">Confirmar Senha:</Label>
+      <Label htmlFor="confirmPassword">Confirmar Senha:</Label>
       <Input
         type="password"
-        id="passwordConfirm"
+        id="confirmPassword"
+        name="confirmPassword"
         placeholder="Confirme sua senha"
-        onChange={(e) => setConfirmedPassword(e.target.value)}
+        value={userData.confirmPassword}
+        onChange={handleInputChange}
         required
       />
       {error && <ErrorMessage>As senhas devem ser iguais!</ErrorMessage>}
