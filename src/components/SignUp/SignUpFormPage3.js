@@ -5,14 +5,33 @@ import { Input } from '../Form/Input';
 import { Label } from '../Form/Label';
 import { AiOutlineCamera } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
-import { COLORS } from '../../services/Constants/colors';
 import { useEffect, useState } from 'react';
+import useSignUp from '../../hooks/api/useSignUp';
+import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
+import { COLORS } from '../../services/Constants/colors';
 const { LIGHT_GRAY } = COLORS;
 
-export default function SignUpFormPage2({ userData, setPageNumber }) {
+const convertBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+};
+
+export default function SignUpFormPage3({ userData, setPageNumber }) {
   const [imageName, setImageName] = useState('');
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
+
+  const { signUpLoading, signUp } = useSignUp();
 
   useEffect(() => {
     if (!selectedFile) {
@@ -26,10 +45,29 @@ export default function SignUpFormPage2({ userData, setPageNumber }) {
     return () => URL.revokeObjectURL(objectURL);
   }, [selectedFile]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    alert('Submitted');
+    const formData = new FormData();
+
+    formData.append('user', userData.user);
+    formData.append('name', userData.name);
+    formData.append('email', userData.email);
+    formData.append('password', userData.password);
+
+    if (selectedFile) {
+      const base64 = await convertBase64(selectedFile);
+
+      formData.append('picture', base64);
+    }
+
+    try {
+      await signUp(formData);
+    } catch (err) {
+      if (err.response.status === 409) {
+        setPageNumber(1);
+      }
+    }
   }
 
   function handleInputChange(e) {
@@ -48,29 +86,39 @@ export default function SignUpFormPage2({ userData, setPageNumber }) {
       <Label htmlFor="profilePicture">Foto de perfil (opcional):</Label>
       <InputFileDiv>
         <StyledLabel htmlFor="profilePicture">
-          Selecione um arquivo:
-          {!selectedFile && (
+          Selecione uma foto <br /> (máximo 25MB):
+          {selectedFile ? (
+            <img src={preview} alt="Selected file" />
+          ) : (
             <IconContext.Provider value={{ color: `${LIGHT_GRAY}`, size: '70px' }}>
               <AiOutlineCamera />
             </IconContext.Provider>
           )}
-          {selectedFile && <img src={preview} />}
           <ImageName>{imageName}</ImageName>
         </StyledLabel>
 
-        <StyledInput type="file" id="profilePicture" placeholder="Selecione uma foto" onChange={handleInputChange} />
+        <StyledInput
+          type="file"
+          accept="image/*"
+          id="profilePicture"
+          placeholder="Selecione uma foto"
+          onChange={handleInputChange}
+        />
       </InputFileDiv>
 
       <Buttons>
         <ButtonDiv>
           <StyledButton onClick={() => setPageNumber(2)} disabled={false}>
+            <IconContext.Provider value={{ className: 'react-icons-back' }}>
+              <MdOutlineKeyboardArrowLeft />
+            </IconContext.Provider>
             Anterior
           </StyledButton>
         </ButtonDiv>
 
         <ButtonDiv>
           <StyledButton type="submit" disabled={false}>
-            Cadastrar
+            {signUpLoading ? 'Loading...' : 'Cadastrar'}
           </StyledButton>
         </ButtonDiv>
       </Buttons>

@@ -4,14 +4,34 @@ const { WHITE, RED } = COLORS;
 
 export const Button = styled.button`
   width: 100%;
-  height: 35px;
+  height: 40px;
   background-color: ${RED};
   border: none;
   border-radius: 50px;
   cursor: pointer;
 
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 17px;
   color: ${WHITE};
+
+  .react-icons-back {
+    font-size: 35px;
+
+    position: absolute;
+    left: 2px;
+  }
+
+  .react-icons-forward {
+    font-size: 35px;
+
+    position: absolute;
+    right: 2px;
+  }
 `;

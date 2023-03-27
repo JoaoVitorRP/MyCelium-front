@@ -1,3 +1,5 @@
+import { IconContext } from 'react-icons';
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { Button } from '../Form/Button';
 import { StyledForm } from '../Form/Form';
 import { Input } from '../Form/Input';
@@ -29,6 +31,9 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
 
       <Button type="submit" disabled={false}>
         Próximo
+        <IconContext.Provider value={{ className: 'react-icons-forward' }}>
+          <MdOutlineKeyboardArrowRight />
+        </IconContext.Provider>
       </Button>
     </StyledForm>
   );

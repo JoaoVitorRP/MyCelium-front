@@ -4,6 +4,8 @@ import { Button } from '../Form/Button';
 import { StyledForm } from '../Form/Form';
 import { Input } from '../Form/Input';
 import { Label } from '../Form/Label';
+import { IconContext } from 'react-icons';
+import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { COLORS } from '../../services/Constants/colors';
 const { RED } = COLORS;
 
@@ -47,6 +49,9 @@ export default function SignUpFormPage2({ userData, handleInputChange, setPageNu
       <Buttons>
         <ButtonDiv>
           <Button onClick={() => setPageNumber(1)} disabled={false}>
+            <IconContext.Provider value={{ className: 'react-icons-back' }}>
+              <MdOutlineKeyboardArrowLeft />
+            </IconContext.Provider>
             Anterior
           </Button>
         </ButtonDiv>
@@ -54,6 +59,9 @@ export default function SignUpFormPage2({ userData, handleInputChange, setPageNu
         <ButtonDiv>
           <Button type="submit" disabled={false}>
             Próximo
+            <IconContext.Provider value={{ className: 'react-icons-forward' }}>
+              <MdOutlineKeyboardArrowRight />
+            </IconContext.Provider>
           </Button>
         </ButtonDiv>
       </Buttons>

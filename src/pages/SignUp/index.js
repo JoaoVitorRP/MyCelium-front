@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ScreenRedirect } from '../../components/Auth/ScreenRedirect';
-import SignUpFormPage1 from '../../components/SignUp.js/SignUpFormPage1';
-import SignUpFormPage2 from '../../components/SignUp.js/SignUpFormPage2';
-import SignUpFormPage3 from '../../components/SignUp.js/SignUpFormPage3';
+import SignUpFormPage1 from '../../components/SignUp/SignUpFormPage1';
+import SignUpFormPage2 from '../../components/SignUp/SignUpFormPage2';
+import SignUpFormPage3 from '../../components/SignUp/SignUpFormPage3';
 import Auth from '../../layouts/Auth';
 
 export default function SignUp() {
