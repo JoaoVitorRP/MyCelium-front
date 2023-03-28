@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import useSignUp from '../../hooks/api/useSignUp';
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { COLORS } from '../../services/Constants/colors';
+import LoadingDots from '../Form/Loading';
 const { LIGHT_GRAY } = COLORS;
 
 const convertBase64 = (file) => {
@@ -103,23 +104,24 @@ export default function SignUpFormPage3({ userData, setPageNumber }) {
           id="profilePicture"
           placeholder="Selecione uma foto"
           onChange={handleInputChange}
+          disabled={signUpLoading}
         />
       </InputFileDiv>
 
       <Buttons>
         <ButtonDiv>
-          <StyledButton onClick={() => setPageNumber(2)} disabled={false}>
+          <Button onClick={() => setPageNumber(2)} disabled={signUpLoading}>
             <IconContext.Provider value={{ className: 'react-icons-back' }}>
               <MdOutlineKeyboardArrowLeft />
             </IconContext.Provider>
             Anterior
-          </StyledButton>
+          </Button>
         </ButtonDiv>
 
         <ButtonDiv>
-          <StyledButton type="submit" disabled={false}>
-            {signUpLoading ? 'Loading...' : 'Cadastrar'}
-          </StyledButton>
+          <Button type="submit" disabled={signUpLoading}>
+            {signUpLoading ? <LoadingDots /> : 'Cadastrar'}
+          </Button>
         </ButtonDiv>
       </Buttons>
     </StyledForm>
@@ -156,10 +158,6 @@ const ImageName = styled.span``;
 
 const StyledInput = styled(Input)`
   display: none;
-`;
-
-const StyledButton = styled(Button)`
-  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
 `;
 
 const Buttons = styled.div`

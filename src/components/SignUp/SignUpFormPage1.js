@@ -7,6 +7,7 @@ import { Input } from '../Form/Input';
 import { Label } from '../Form/Label';
 import { COLORS } from '../../services/Constants/colors';
 import useValidateUser from '../../hooks/api/useValidateUser';
+import LoadingDots from '../Form/Loading';
 const { FONT_BLACK } = COLORS;
 
 export default function SignUpFormPage1({ userData, handleInputChange, setPageNumber }) {
@@ -40,6 +41,7 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
         placeholder="email@email.com"
         value={userData.email}
         onChange={handleInputChange}
+        disabled={validateUserLoading}
         required
       />
 
@@ -54,6 +56,7 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
           maxLength={16}
           value={userData.user}
           onChange={handleInputChange}
+          disabled={validateUserLoading}
           required
         />
       </UserInputContainer>
@@ -67,12 +70,13 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
         maxLength={30}
         value={userData.name}
         onChange={handleInputChange}
+        disabled={validateUserLoading}
         required
       />
 
-      <Button type="submit" disabled={false}>
+      <Button type="submit" disabled={validateUserLoading}>
         {validateUserLoading ? (
-          'Loading...'
+          <LoadingDots />
         ) : (
           <>
             Próximo

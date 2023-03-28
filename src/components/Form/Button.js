@@ -6,9 +6,10 @@ export const Button = styled.button`
   width: 100%;
   height: 40px;
   background-color: ${RED};
+  opacity: ${(props) => (props.disabled ? '0.85' : '1')};
   border: none;
   border-radius: 50px;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
 
   position: relative;
 
