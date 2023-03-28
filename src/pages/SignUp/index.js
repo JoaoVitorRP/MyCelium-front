@@ -8,6 +8,7 @@ import Auth from '../../layouts/Auth';
 
 export default function SignUp() {
   const [pageNumber, setPageNumber] = useState(1);
+  const [error, setError] = useState('');
   const [userData, setUserData] = useState({
     email: '',
     user: '',
@@ -27,6 +28,7 @@ export default function SignUp() {
       return;
     }
 
+    setError('');
     setUserData({ ...userData, [name]: value });
   }
 
@@ -35,11 +37,17 @@ export default function SignUp() {
       <h1>Cadastrar ({pageNumber}/3):</h1>
 
       {pageNumber === 1 ? (
-        <SignUpFormPage1 userData={userData} handleInputChange={handleInputChange} setPageNumber={setPageNumber} />
+        <SignUpFormPage1
+          error={error}
+          setError={setError}
+          userData={userData}
+          handleInputChange={handleInputChange}
+          setPageNumber={setPageNumber}
+        />
       ) : pageNumber === 2 ? (
         <SignUpFormPage2 userData={userData} handleInputChange={handleInputChange} setPageNumber={setPageNumber} />
       ) : pageNumber === 3 ? (
-        <SignUpFormPage3 userData={userData} setPageNumber={setPageNumber} />
+        <SignUpFormPage3 error={error} setError={setError} userData={userData} setPageNumber={setPageNumber} />
       ) : (
         <></>
       )}

@@ -8,9 +8,10 @@ import { Label } from '../Form/Label';
 import { COLORS } from '../../services/Constants/colors';
 import useValidateUser from '../../hooks/api/useValidateUser';
 import LoadingDots from '../Form/Loading';
+import { ErrorMessage } from '../Form/ErrorMessage';
 const { FONT_BLACK } = COLORS;
 
-export default function SignUpFormPage1({ userData, handleInputChange, setPageNumber }) {
+export default function SignUpFormPage1({ error, setError, userData, handleInputChange, setPageNumber }) {
   const { validateUserLoading, validateUser } = useValidateUser();
 
   async function handleSubmit(e) {
@@ -26,8 +27,7 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
 
       setPageNumber(2);
     } catch (err) {
-      if (err.response.data.message === 'Invalid email') return console.log('email');
-      if (err.response.data.message === 'Invalid user') return console.log('user');
+      if (err.response.status === 409) return setError(err.response.data.message);
     }
   }
 
@@ -42,8 +42,10 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
         value={userData.email}
         onChange={handleInputChange}
         disabled={validateUserLoading}
+        error={error === 'Invalid email'}
         required
       />
+      {error === 'Invalid email' && <ErrorMessage>Esse email já está cadastrado</ErrorMessage>}
 
       <Label htmlFor="user">Usuário:</Label>
       <UserInputContainer>
@@ -57,9 +59,11 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
           value={userData.user}
           onChange={handleInputChange}
           disabled={validateUserLoading}
+          error={error === 'Invalid user'}
           required
         />
       </UserInputContainer>
+      {error === 'Invalid user' && <ErrorMessage>Esse usuário já existe</ErrorMessage>}
 
       <Label htmlFor="name">Nome:</Label>
       <Input

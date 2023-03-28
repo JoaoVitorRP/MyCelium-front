@@ -10,6 +10,9 @@ import useSignUp from '../../hooks/api/useSignUp';
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md';
 import { COLORS } from '../../services/Constants/colors';
 import LoadingDots from '../Form/Loading';
+import { ErrorMessage } from '../Form/ErrorMessage';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const { LIGHT_GRAY } = COLORS;
 
 const convertBase64 = (file) => {
@@ -27,12 +30,13 @@ const convertBase64 = (file) => {
   });
 };
 
-export default function SignUpFormPage3({ userData, setPageNumber }) {
+export default function SignUpFormPage3({ error, setError, userData, setPageNumber }) {
   const [imageName, setImageName] = useState('');
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
 
   const { signUpLoading, signUp } = useSignUp();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!selectedFile) {
@@ -64,9 +68,18 @@ export default function SignUpFormPage3({ userData, setPageNumber }) {
 
     try {
       await signUp(formData);
+
+      toast.success('Cadastro concluído com sucesso!');
+
+      navigate('/');
     } catch (err) {
       if (err.response.status === 409) {
-        setPageNumber(1);
+        setError(err.response.data.message);
+        return setPageNumber(1);
+      }
+
+      if (err.response.status === 400) {
+        return setError('Invalid image');
       }
     }
   }
@@ -107,6 +120,7 @@ export default function SignUpFormPage3({ userData, setPageNumber }) {
           disabled={signUpLoading}
         />
       </InputFileDiv>
+      {error === 'InvalidImage' && <ErrorMessage>A imagem deve ser menor que 25MB!</ErrorMessage>}
 
       <Buttons>
         <ButtonDiv>

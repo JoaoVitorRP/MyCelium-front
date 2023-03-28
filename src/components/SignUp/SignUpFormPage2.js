@@ -6,8 +6,7 @@ import { Input } from '../Form/Input';
 import { Label } from '../Form/Label';
 import { IconContext } from 'react-icons';
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from 'react-icons/md';
-import { COLORS } from '../../services/Constants/colors';
-const { RED } = COLORS;
+import { ErrorMessage } from '../Form/ErrorMessage';
 
 export default function SignUpFormPage2({ userData, handleInputChange, setPageNumber }) {
   const [error, setError] = useState(false);
@@ -44,6 +43,7 @@ export default function SignUpFormPage2({ userData, handleInputChange, setPageNu
         placeholder="Confirme sua senha"
         value={userData.confirmPassword}
         onChange={handleInputChange}
+        error={error}
         required
       />
       {error && <ErrorMessage>As senhas devem ser iguais!</ErrorMessage>}
@@ -70,14 +70,6 @@ export default function SignUpFormPage2({ userData, handleInputChange, setPageNu
     </StyledForm>
   );
 }
-
-const ErrorMessage = styled.span`
-  width: 100%;
-  margin: -20px 0px 25px 0px;
-
-  font-size: 15px;
-  color: ${RED};
-`;
 
 const Buttons = styled.div`
   width: 100%;
