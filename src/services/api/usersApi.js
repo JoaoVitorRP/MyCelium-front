@@ -15,3 +15,9 @@ export async function signUp(formData) {
 
   return response.data;
 }
+
+export async function signIn(body) {
+  const response = await api.post('/users/sign-in', body);
+
+  return response.data;
+}
