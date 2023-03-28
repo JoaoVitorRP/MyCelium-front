@@ -6,11 +6,32 @@ import { StyledForm } from '../Form/Form';
 import { Input } from '../Form/Input';
 import { Label } from '../Form/Label';
 import { COLORS } from '../../services/Constants/colors';
+import useValidateUser from '../../hooks/api/useValidateUser';
 const { FONT_BLACK } = COLORS;
 
 export default function SignUpFormPage1({ userData, handleInputChange, setPageNumber }) {
+  const { validateUserLoading, validateUser } = useValidateUser();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const body = {
+      user: userData.user,
+      email: userData.email,
+    };
+
+    try {
+      await validateUser(body);
+
+      setPageNumber(2);
+    } catch (err) {
+      if (err.response.data.message === 'Invalid email') return console.log('email');
+      if (err.response.data.message === 'Invalid user') return console.log('user');
+    }
+  }
+
   return (
-    <StyledForm onSubmit={() => setPageNumber(2)}>
+    <StyledForm onSubmit={handleSubmit}>
       <Label htmlFor="email">Email:</Label>
       <Input
         type="email"
@@ -50,10 +71,16 @@ export default function SignUpFormPage1({ userData, handleInputChange, setPageNu
       />
 
       <Button type="submit" disabled={false}>
-        Próximo
-        <IconContext.Provider value={{ className: 'react-icons-forward' }}>
-          <MdOutlineKeyboardArrowRight />
-        </IconContext.Provider>
+        {validateUserLoading ? (
+          'Loading...'
+        ) : (
+          <>
+            Próximo
+            <IconContext.Provider value={{ className: 'react-icons-forward' }}>
+              <MdOutlineKeyboardArrowRight />
+            </IconContext.Provider>
+          </>
+        )}
       </Button>
     </StyledForm>
   );

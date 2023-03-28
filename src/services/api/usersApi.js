@@ -1,5 +1,11 @@
 import api from './api';
 
+export async function validateUser(body) {
+  const response = await api.post('/users/sign-up/validate', body);
+
+  return response.data;
+}
+
 export async function signUp(formData) {
   const response = await api.post('/users/sign-up', formData, {
     headers: {
