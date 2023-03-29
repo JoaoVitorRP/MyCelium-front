@@ -3,12 +3,18 @@ import Logo from '../Logo';
 import { useNavigate } from 'react-router-dom';
 import ProfilePicture from './ProfilePicture';
 import SwapPagesButtons from './SwapPagesButtons';
-import { COLORS } from '../../services/Constants/colors';
 import { useContext } from 'react';
 import UserContext from '../../contexts/userContext';
+import { useState } from 'react';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { IconContext } from 'react-icons';
+import { COLORS } from '../../services/Constants/colors';
+import DropdownMenu from './DropdownMenu';
 const { FONT_BLACK, FONT_GRAY, WHITE } = COLORS;
 
 export default function Header() {
+  const [dropdownActive, setDropdownActive] = useState(false);
+
   const navigate = useNavigate();
 
   const { userData } = useContext(UserContext);
@@ -27,6 +33,14 @@ export default function Header() {
         </UserAndName>
 
         <ProfilePicture pictureUrl={user.picture} />
+
+        <IconContext.Provider
+          value={{ className: `${dropdownActive ? 'dropdown-arrow-active' : 'dropdown-arrow-disabled'}` }}
+        >
+          <MdKeyboardArrowDown onClick={() => setDropdownActive(!dropdownActive)} />
+        </IconContext.Provider>
+
+        {dropdownActive && <DropdownMenu setDropdownActive={setDropdownActive} dropdownActive={dropdownActive} />}
       </UserData>
     </HeaderContainer>
   );
@@ -62,12 +76,32 @@ const UserData = styled.div`
   color: ${FONT_BLACK};
   text-align: right;
 
+  position: relative;
+
   b {
     font-weight: 700;
   }
 
   p {
     color: ${FONT_GRAY};
+  }
+
+  .dropdown-arrow-active {
+    cursor: pointer;
+
+    font-size: 40px;
+
+    transform: rotate(180deg);
+    transition: transform 0.2s linear;
+  }
+
+  .dropdown-arrow-disabled {
+    cursor: pointer;
+
+    font-size: 40px;
+
+    transform: rotate(0deg);
+    transition: transform 0.2s linear;
   }
 `;
 
