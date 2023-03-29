@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../services/Constants/colors';
-const { FONT_BLACK, WHITE, BEIGE } = COLORS;
+const { FONT_BLACK, WHITE } = COLORS;
 
 export const FormDiv = styled.div`
   width: calc(35% - 10px);
@@ -24,13 +24,4 @@ export const FormDiv = styled.div`
     color: ${FONT_BLACK};
     text-align: left;
   }
-`;
-
-export const Screen = styled.main`
-  width: 100%;
-  height: 100vh;
-  padding: 20px;
-  background-color: ${BEIGE};
-
-  display: flex;
 `;

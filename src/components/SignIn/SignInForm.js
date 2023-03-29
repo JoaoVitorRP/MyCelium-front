@@ -35,7 +35,7 @@ export default function SignInForm() {
 
       toast.success('Login realizado com sucesso!');
 
-      navigate('/feed');
+      navigate('/timeline');
     } catch (err) {
       setError(true);
     }
