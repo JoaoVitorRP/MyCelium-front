@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import UserContext from '../../contexts/userContext';
 import useSignIn from '../../hooks/api/useSignIn';
 import { Button } from '../Form/Button';
 import { ErrorMessage } from '../Form/ErrorMessage';
@@ -17,7 +18,9 @@ export default function SignInForm() {
   const [error, setError] = useState(false);
 
   const { signInLoading, signIn } = useSignIn();
+
   const navigate = useNavigate();
+  const { setUserData } = useContext(UserContext);
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -31,7 +34,11 @@ export default function SignInForm() {
     e.preventDefault();
 
     try {
-      await signIn(body);
+      const userData = await signIn(body);
+
+      setUserData(userData);
+
+      localStorage.setItem('myceliumUserData', JSON.stringify(userData));
 
       toast.success('Login realizado com sucesso!');
 

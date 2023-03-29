@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import pfp from '../../assets/images/default-pfp.png';
 
-export default function ProfilePicture() {
+export default function ProfilePicture({ pictureUrl }) {
   return (
-    <PictureContainer>
+    <PictureContainer hasPicture={pictureUrl}>
       {/* eslint-disable-next-line */}
-      <img src={pfp} alt="Profile picture" />
+      <img src={pictureUrl || pfp} alt="Profile picture" />
     </PictureContainer>
   );
 }
@@ -13,8 +13,8 @@ export default function ProfilePicture() {
 const PictureContainer = styled.div`
   height: 100%;
   aspect-ratio: 1 / 1;
-  padding: 5px;
-  background-color: #999999;
+  padding: ${(props) => (props.hasPicture ? '0px' : '5px')};
+  background-color: ${(props) => (props.hasPicture ? 'transparent' : '#999999')};
   border-radius: 50%;
 
   img {

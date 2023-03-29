@@ -4,24 +4,29 @@ import { useNavigate } from 'react-router-dom';
 import ProfilePicture from './ProfilePicture';
 import SwapPagesButtons from './SwapPagesButtons';
 import { COLORS } from '../../services/Constants/colors';
+import { useContext } from 'react';
+import UserContext from '../../contexts/userContext';
 const { FONT_BLACK, FONT_GRAY, WHITE } = COLORS;
 
 export default function Header() {
   const navigate = useNavigate();
 
+  const { userData } = useContext(UserContext);
+  const { user } = userData;
+
   return (
     <HeaderContainer>
-      <Logo height="45" fontSize="2.5" onClick={() => navigate('/feed')} />
-      
+      <Logo height="45" fontSize="2.5" onClick={() => navigate('/timeline')} />
+
       <SwapPagesButtons />
 
       <UserData>
         <UserAndName>
-          <b>Nome de usuário</b>
-          <p>@usuário</p>
+          <b>{user.name}</b>
+          <p>@{user.user}</p>
         </UserAndName>
 
-        <ProfilePicture />
+        <ProfilePicture pictureUrl={user.picture} />
       </UserData>
     </HeaderContainer>
   );
@@ -55,6 +60,7 @@ const UserData = styled.div`
   font-size: 1rem;
   line-height: 1.2rem;
   color: ${FONT_BLACK};
+  text-align: right;
 
   b {
     font-weight: 700;
