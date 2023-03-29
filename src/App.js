@@ -1,6 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { UserProvider } from './contexts/userContext';
+import useToken from './hooks/useToken';
+import Feed from './layouts/Feed';
 import Timeline from './pages/Feed/Timeline';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -25,10 +27,29 @@ export default function App() {
           <Routes>
             <Route path="/" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/timeline" element={<Timeline />} />
+            <Route
+              path="/feed"
+              element={
+                <RouteGuard>
+                  <Feed />
+                </RouteGuard>
+              }
+            >
+              <Route path="timeline" element={<Timeline />} />
+            </Route>
           </Routes>
         </Router>
       </UserProvider>
     </>
   );
+}
+
+function RouteGuard({ children }) {
+  const token = useToken();
+
+  if (!token) {
+    return <Navigate to="/" />;
+  }
+
+  return <>{children}</>;
 }

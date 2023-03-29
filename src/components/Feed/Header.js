@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <HeaderContainer>
-      <Logo height="45" fontSize="2.5" onClick={() => navigate('/timeline')} />
+      <Logo height="45" fontSize="2.5" onClick={() => navigate('/feed/timeline')} />
 
       <SwapPagesButtons />
 
