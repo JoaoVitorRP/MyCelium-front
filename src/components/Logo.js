@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import mushroom from '../assets/images/mushroom.svg';
+import logo from '../assets/images/logo.png';
 import { COLORS } from '../services/Constants/colors';
 const { FONT_BLACK } = COLORS;
 
 export default function Logo({ height, fontSize }) {
   return (
     <LogoDiv height={height} fontSize={fontSize}>
-      <img src={mushroom} alt="Mushroom emoji" />
+      <img src={logo} alt="Logo" />
       MyCelium
     </LogoDiv>
   );
@@ -15,6 +15,7 @@ export default function Logo({ height, fontSize }) {
 const LogoDiv = styled.div`
   width: auto;
   height: ${(props) => props.height}px;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
@@ -25,6 +26,7 @@ const LogoDiv = styled.div`
 
   img {
     height: 100%;
-    margin-right: 10px;
+    border-radius: 10px;
+    margin-right: 3.5%;
   }
 `;
