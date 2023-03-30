@@ -4,7 +4,6 @@ const { FONT_BLACK, WHITE } = COLORS;
 
 export const FormDiv = styled.div`
   width: calc(35% - 10px);
-  height: 100%;
   padding: 5%;
   background-color: ${WHITE};
   border-radius: 50px;

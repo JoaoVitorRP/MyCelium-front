@@ -16,7 +16,6 @@ export default function ImageContainer() {
 
 const ImgContainer = styled.div`
   width: calc(65% - 10px);
-  height: 100%;
   border-radius: 50px;
   background-image: url(${mushroomGirl});
   background-repeat: no-repeat;
