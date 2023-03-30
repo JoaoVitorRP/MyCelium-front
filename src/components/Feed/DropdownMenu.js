@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MdOutlineLogout } from 'react-icons/md';
-import { COLORS } from '../../services/Constants/colors';
 import { useNavigate } from 'react-router-dom';
+import { COLORS } from '../../services/Constants/colors';
 const { WHITE, RED } = COLORS;
 
 export default function DropdownMenu({ setDropdownActive, dropdownActive }) {
@@ -39,7 +39,7 @@ const BoxContainer = styled.div`
   position: absolute;
   right: -1.1rem;
   top: 3.5rem;
-  z-index: 3;
+  z-index: 4;
 `;
 
 const DropdownBox = styled.div`
@@ -89,6 +89,8 @@ const LogOut = styled.li`
   width: 100%;
   padding: 0 2rem;
   background-color: ${WHITE};
+
+  color: ${RED};
 
   display: flex;
   align-items: center;

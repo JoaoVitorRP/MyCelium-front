@@ -17,7 +17,7 @@ export default function Post() {
 
   let clampedDescription;
   if (description.length >= 200) {
-    clampedDescription = `${description.slice(0, 191)}...`;
+    clampedDescription = `${description.slice(0, 186)}...`;
   }
 
   return (
@@ -57,15 +57,15 @@ export default function Post() {
 
 const Container = styled.div`
   height: 100%;
-  padding: 20px;
+  padding: 2.2vh;
   background-color: ${WHITE};
   border-radius: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-bottom: 4.5vh;
 
   font-family: 'Roboto';
-  font-size: 1.2vw;
-  line-height: 1.3vw;
+  font-size: 2vh;
+  line-height: 2.1vh;
   color: ${FONT_BLACK};
 `;
 

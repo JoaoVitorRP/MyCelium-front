@@ -17,6 +17,8 @@ const PictureContainer = styled.div`
   background-color: ${(props) => (props.hasPicture ? 'transparent' : '#999999')};
   border-radius: 50%;
 
+  user-select: none;
+
   img {
     width: 100%;
     height: 100%;

@@ -8,9 +8,9 @@ import UserContext from '../../contexts/userContext';
 import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { IconContext } from 'react-icons';
-import { COLORS } from '../../services/Constants/colors';
 import DropdownMenu from './DropdownMenu';
-const { FONT_BLACK, FONT_GRAY, WHITE } = COLORS;
+import { COLORS } from '../../services/Constants/colors';
+const { FONT_BLACK, FONT_GRAY, WHITE, BEIGE } = COLORS;
 
 export default function Header() {
   const [dropdownActive, setDropdownActive] = useState(false);
@@ -21,30 +21,44 @@ export default function Header() {
   const { user } = userData;
 
   return (
-    <HeaderContainer>
-      <Logo height="45" fontSize="2.5" onClick={() => navigate('/feed/timeline')} />
+    <>
+      <BeigeDiv />
+      <HeaderContainer>
+        <Logo height="45" fontSize="2.5" onClick={() => navigate('/feed/timeline')} />
 
-      <SwapPagesButtons />
+        <SwapPagesButtons />
 
-      <UserData>
-        <UserAndName>
-          <b>{user.name}</b>
-          <p>@{user.user}</p>
-        </UserAndName>
+        <UserData>
+          <UserAndName>
+            <b>{user.name}</b>
+            <p>@{user.user}</p>
+          </UserAndName>
 
-        <ProfilePicture pictureUrl={user.picture} />
+          <ProfilePicture pictureUrl={user.picture} />
 
-        <IconContext.Provider
-          value={{ className: `${dropdownActive ? 'dropdown-arrow-active' : 'dropdown-arrow-disabled'}` }}
-        >
-          <MdKeyboardArrowDown onClick={() => setDropdownActive(!dropdownActive)} />
-        </IconContext.Provider>
+          <IconContext.Provider
+            value={{ className: `${dropdownActive ? 'dropdown-arrow-active' : 'dropdown-arrow-disabled'}` }}
+          >
+            <MdKeyboardArrowDown onClick={() => setDropdownActive(!dropdownActive)} />
+          </IconContext.Provider>
 
-        {dropdownActive && <DropdownMenu setDropdownActive={setDropdownActive} dropdownActive={dropdownActive} />}
-      </UserData>
-    </HeaderContainer>
+          {dropdownActive && <DropdownMenu setDropdownActive={setDropdownActive} dropdownActive={dropdownActive} />}
+        </UserData>
+      </HeaderContainer>
+    </>
   );
 }
+
+const BeigeDiv = styled.div`
+  width: 100vw;
+  height: 40px;
+  background-color: ${BEIGE};
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+`;
 
 const HeaderContainer = styled.header`
   width: calc(100% - 40px);
@@ -62,6 +76,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 20px;
   left: 20px;
+  z-index: 3;
 `;
 
 const UserData = styled.div`
@@ -91,8 +106,8 @@ const UserData = styled.div`
 
     font-size: 40px;
 
-    transform: rotate(180deg);
-    transition: transform 0.2s linear;
+    transform: rotate(360deg);
+    transition: transform 0.15s linear;
   }
 
   .dropdown-arrow-disabled {
@@ -100,8 +115,8 @@ const UserData = styled.div`
 
     font-size: 40px;
 
-    transform: rotate(0deg);
-    transition: transform 0.2s linear;
+    transform: rotate(270deg);
+    transition: transform 0.15s linear;
   }
 `;
 
