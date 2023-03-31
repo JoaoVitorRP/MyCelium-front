@@ -50,7 +50,7 @@ export default function SignUpFormPage2({ userData, handleInputChange, setPageNu
 
       <Buttons>
         <ButtonDiv>
-          <Button onClick={() => setPageNumber(1)} disabled={false}>
+          <Button type="button" onClick={() => setPageNumber(1)} disabled={false}>
             <IconContext.Provider value={{ className: 'react-icons-back' }}>
               <MdOutlineKeyboardArrowLeft />
             </IconContext.Provider>
