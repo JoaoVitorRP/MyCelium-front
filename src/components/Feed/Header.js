@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Logo from '../Logo';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProfilePicture from './ProfilePicture';
-import SwapPagesButtons from './SwapPagesButtons';
+import NavigationButtons from './NavigationButtons';
 import { useContext } from 'react';
 import UserContext from '../../contexts/userContext';
 import { useState } from 'react';
@@ -24,9 +24,11 @@ export default function Header() {
     <>
       <BeigeDiv />
       <HeaderContainer>
-        <Logo height="45" fontSize="2.5" onClick={() => navigate('/feed/timeline')} />
+        <Link to="/feed/timeline">
+          <Logo height="45" fontSize="2.5" onClick={() => navigate('/feed/timeline')} />
+        </Link>
 
-        <SwapPagesButtons />
+        <NavigationButtons />
 
         <UserData>
           <UserAndName>
@@ -77,6 +79,10 @@ const HeaderContainer = styled.header`
   top: 20px;
   left: 20px;
   z-index: 3;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const UserData = styled.div`

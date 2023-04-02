@@ -7,11 +7,21 @@ export default function Feed() {
   return (
     <StyledScreen>
       <Header />
-      <Outlet />
+      <Main>
+        <Outlet />
+      </Main>
     </StyledScreen>
   );
 }
 
 const StyledScreen = styled(Screen)`
   padding-top: 140px;
+`;
+
+const Main = styled.main`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
 `;
