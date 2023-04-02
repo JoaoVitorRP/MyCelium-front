@@ -1,37 +1,32 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
-import UserContext from '../../../contexts/userContext';
 import ProfilePicture from '../ProfilePicture';
 import { useState } from 'react';
 import { COLORS } from '../../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY, LIGHT_GRAY, WHITE, RED } = COLORS;
 
-const description =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada odio ut massa ornare, a imperdiet elit condimentum. Nam sed luctus metus. Aliquam gravida mauris ut consequat feugiat. Phasellus vel nulla at metus semper finibus scelerisque eget metus. Nam in tortor nulla. Donec pretium metus ex, ut congue velit pharetra quis. Phasellus rhoncus risus eu mauris rhoncus, ac maximus nulla interdum. Vivamus auctor vitae arcu quis posuere. Suspendisse potenti. Donec eget volutpat sem, vel lacinia risus.';
+export default function Post({ postData }) {
+  const { description, image, users } = postData;
+  const { user, name, picture } = users;
 
-export default function Post() {
   const [showFullText, setShowFullText] = useState(false);
 
-  const { userData } = useContext(UserContext);
-  const { user } = userData;
-
   let clampedDescription;
-  if (description.length >= 200) {
+  if (description.length > 185) {
     clampedDescription = `${description.slice(0, 186)}...`;
   }
 
   return (
     <Container showFullText={showFullText}>
       <PostHeader>
-        <ProfilePicture pictureUrl={user.picture} />
+        <ProfilePicture pictureUrl={picture} />
 
         <UserAndName>
-          <b>{user.name}</b>
-          <p>@{user.user}</p>
+          <b>{name}</b>
+          <p>@{user}</p>
         </UserAndName>
       </PostHeader>
 
-      <div>
+      <DescriptionContainer>
         {clampedDescription && !showFullText ? (
           <>
             {clampedDescription} <SeeMore onClick={() => setShowFullText(true)}>ver mais</SeeMore>
@@ -43,13 +38,10 @@ export default function Post() {
         ) : (
           description
         )}
-      </div>
+      </DescriptionContainer>
 
       <Image>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Amanita_muscaria_%28fly_agaric%29.JPG/1200px-Amanita_muscaria_%28fly_agaric%29.JPG"
-          alt="Post"
-        />
+        <img src={image} alt="Post" />
       </Image>
     </Container>
   );
@@ -94,6 +86,10 @@ const UserAndName = styled.div`
     font-size: 1.7vh;
     color: ${FONT_GRAY};
   }
+`;
+
+const DescriptionContainer = styled.div`
+  white-space: pre-line;
 `;
 
 const SeeMore = styled.span`
