@@ -28,6 +28,7 @@ const convertBase64 = (file) => {
 
 export default function SignUpFormPage3({ error, setError, userData, setPageNumber }) {
   const [selectedFile, setSelectedFile] = useState();
+  const [fileError, setFileError] = useState(false);
 
   const { signUpLoading, signUp } = useSignUp();
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ export default function SignUpFormPage3({ error, setError, userData, setPageNumb
       }
 
       if (err.response.status === 400) {
-        return setError('Invalid image');
+        return setFileError(true);
       }
     }
   }
@@ -73,9 +74,10 @@ export default function SignUpFormPage3({ error, setError, userData, setPageNumb
         setSelectedFile={setSelectedFile}
         label={'Foto de perfil (opcional):'}
         loading={signUpLoading}
+        setFileError={setFileError}
       />
 
-      {error === 'Invalid image' && <ErrorMessage>A imagem deve ser menor que 25MB!</ErrorMessage>}
+      {fileError && <StyledErrorMessage>A imagem deve ser menor que 25MB!</StyledErrorMessage>}
 
       <Buttons>
         <ButtonDiv>
@@ -97,8 +99,13 @@ export default function SignUpFormPage3({ error, setError, userData, setPageNumb
   );
 }
 
+const StyledErrorMessage = styled(ErrorMessage)`
+  margin: 10px 0 0 0;
+`;
+
 const Buttons = styled.div`
   width: 100%;
+  margin-top: 25px;
 
   display: flex;
   justify-content: space-between;

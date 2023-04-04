@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { AiFillHome } from 'react-icons/ai';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { IconContext } from 'react-icons';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavigationButton } from './NavigationButton';
 

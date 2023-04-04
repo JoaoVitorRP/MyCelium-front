@@ -7,5 +7,6 @@ export const ErrorMessage = styled.span`
   margin: -20px 0px 25px 0px;
 
   font-size: 15px;
+  font-weight: 700;
   color: ${RED};
 `;

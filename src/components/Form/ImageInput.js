@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { COLORS } from '../../services/Constants/colors';
 const { LIGHT_GRAY } = COLORS;
 
-export default function ImageInput({ selectedFile, setSelectedFile, label, loading }) {
+export default function ImageInput({ selectedFile, setSelectedFile, label, loading, setFileError }) {
   const [imageName, setImageName] = useState('');
   const [preview, setPreview] = useState();
 
@@ -33,6 +33,7 @@ export default function ImageInput({ selectedFile, setSelectedFile, label, loadi
 
     setImageName(e.target.files[0].name);
     setSelectedFile(e.target.files[0]);
+    setFileError(false);
   }
 
   return (
@@ -67,7 +68,6 @@ export default function ImageInput({ selectedFile, setSelectedFile, label, loadi
 const InputFileDiv = styled.div`
   border: 2px dotted ${LIGHT_GRAY};
   border-radius: 10px;
-  margin-bottom: 25px;
 
   text-align: center;
 `;
