@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Input } from '../../Form/Input';
 import { Label } from '../../Form/Label';
 import { StyledForm } from '../../Form/Form';
@@ -6,13 +6,14 @@ import { TextArea } from '../../Form/TextArea';
 import CheckboxInput from '../../Form/CheckboxInput';
 import ImageInput from '../../Form/ImageInput';
 import { useState } from 'react';
-import { COLORS } from '../../../services/Constants/colors';
 import { Button } from '../../Form/Button';
 import { ErrorMessage } from '../../Form/ErrorMessage';
 import { useRef } from 'react';
-const { WHITE, RED } = COLORS;
+import { COLORS } from '../../../services/Constants/colors';
+import { InputContainer } from '../../Form/InputContainer';
+const { RED } = COLORS;
 
-export default function LandingForm() {
+export default function LandingForm({ setPage }) {
   const [selectedFile, setSelectedFile] = useState();
   const [selectedInput, setSelectedInput] = useState();
   const [fileError, setFileError] = useState(false);
@@ -27,7 +28,7 @@ export default function LandingForm() {
       return setFileError(true);
     }
 
-    alert('Submitted');
+    setPage(2);
   }
 
   function handleCheckboxChange(e) {
@@ -85,26 +86,6 @@ export default function LandingForm() {
   );
 }
 
-const InputContainer = styled.div`
-  width: 100%;
-  padding: 20px;
-  background-color: ${WHITE};
-  border-radius: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  margin-bottom: 25px;
-  border: ${(props) => (props.error ? `2px solid ${RED}` : '')};
-
-  animation: ${(props) =>
-    props.error
-      ? css`
-          ${shakeAnimation} 0.2s ease-in-out 0s 2
-        `
-      : ''};
-
-  display: flex;
-  flex-direction: column;
-`;
-
 const StyledErrorMessage = styled(ErrorMessage)`
   margin: 10px 0 0 0;
 `;
@@ -126,11 +107,4 @@ const StyledInput = styled(Input)`
   margin-bottom: 10px;
 
   font-style: italic;
-`;
-
-const shakeAnimation = keyframes`
-  0% { margin-left: 0rem; }
-  25% { margin-left: 0.5rem; }
-  75% { margin-left: -0.5rem; }
-  100% { margin-left: 0rem; }
 `;

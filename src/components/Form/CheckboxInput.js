@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { MdCheckBox } from 'react-icons/md';
 import { COLORS } from '../../services/Constants/colors';
 import { IconContext } from 'react-icons';
-const { FONT_BLACK, LIGHT_GRAY, GREEN } = COLORS;
+const { FONT_BLACK, LIGHT_GRAY, RED } = COLORS;
 
 export default function CheckboxInput({ label, id, name, isSelected, handleCheckboxChange }) {
   return (
@@ -11,14 +11,14 @@ export default function CheckboxInput({ label, id, name, isSelected, handleCheck
       <IconContext.Provider value={{ className: 'check-icon' }}>
         <MdCheckBox />
       </IconContext.Provider>
-      {label}
+      <span>{label}</span>
     </Label>
   );
 }
 
 const Label = styled.label`
   padding: 10px;
-  border: ${(props) => (props.isSelected ? `2px solid ${GREEN}` : `1px solid ${LIGHT_GRAY}`)};
+  border: ${(props) => (props.isSelected ? `2px solid ${RED}` : `1px solid ${LIGHT_GRAY}`)};
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
@@ -32,10 +32,11 @@ const Label = styled.label`
   color: ${FONT_BLACK};
 
   .check-icon {
+    min-width: 30px;
     margin-right: 10px;
 
     font-size: 30px;
-    color: ${(props) => (props.isSelected ? `${GREEN}` : `${LIGHT_GRAY}`)};
+    color: ${(props) => (props.isSelected ? `${RED}` : `${LIGHT_GRAY}`)};
   }
 `;
 
