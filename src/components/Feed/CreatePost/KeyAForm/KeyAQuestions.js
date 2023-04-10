@@ -1,6 +1,6 @@
 export const KeyAQuestions = {
   A01: {
-    question: 'Selecione a característica do chapéu e estípite:',
+    question: '01. Selecione a característica do estípite:',
     choices: [
       {
         id: '1',
@@ -13,23 +13,23 @@ export const KeyAQuestions = {
     ],
   },
   A02: {
-    question: 'Selecione a característica do corpo frutífero:',
+    question: '02. Selecione a característica dos corpos frutíferos:',
     choices: [
       {
         id: '1',
-        label: `Corpo frutífero coriáceo, flexível a resistente, de cores não chamativas (cinza, castanho, marrom). 
+        label: `Corpos frutíferos coriáceos, flexíveis a resistentes, de cores não chamativas (cinza, castanho, marrom). 
           Crescimento sobre troncos caídos ou postes, sempre em lugares ensolarados.`,
       },
       {
         id: 'Pleurotus spp.',
-        label: `Corpo frutífero carnoso-putrescente claro (branco, creme, rosa), pé curto, cilíndrico. 
+        label: `Corpos frutíferos carnosos-putrescentes claros (branco, creme, rosa), pé curto, cilíndrico. 
           Crescimento em conjunto, geralmente imbricado sobre troncos caídos, em locais sombreados. 
           Gênero com espécies comestíveis.`,
       },
     ],
   },
   A03: {
-    question: 'Selecione a característica do estípite:',
+    question: '03. Selecione a característica do estípite:',
     choices: [
       {
         id: 'Schizophyllum commune',
@@ -46,21 +46,26 @@ export const KeyAQuestions = {
     ],
   },
   A04: {
-    question: 'Selecione a característica das frutificações:',
+    question: '04. Selecione a característica das frutificações:',
     choices: [
       {
         id: 'Stiptophyllum erubescens',
-        label: `Frutificações resistentes, marrom escuras a marrom-tabaco. Estípite acamurçado. 
+        label: `Frutificações resistentes, marrom-escuras a marrom-tabaco. Estípite acamurçado. 
           Às vezes, as frutificações nascem em conjunto imbricado ou concrescem, dando aspecto de um grande chapéu com estípite central.`,
       },
       {
-        id: 'Lentinus spp.',
+        id: 'Lentinus strigosus',
         label: `Frutificações flexíveis, castanhas. Superfície superior do píleo coberta por feixes de pelos curtos observáveis com lupa.`,
+      },
+      {
+        id: 'Lentinus crinitus',
+        label: `Por vezes muito parecido com o anterior, porém apresentando no píleo pelos reunidos em feixes de 1mm de comprimento 
+          (é possível medir sob a lupa).`,
       },
     ],
   },
   A05: {
-    question: 'Selecione a característica dos corpos frutíferos:',
+    question: '05. Selecione a característica dos corpos frutíferos:',
     choices: [
       {
         id: '1',
@@ -73,20 +78,20 @@ export const KeyAQuestions = {
     ],
   },
   A06: {
-    question: 'Selecione a característica da esporada:',
+    question: '06. Selecione a característica da esporada:',
     choices: [
       {
         id: '1',
-        label: `Esporada escura, de marrom-chocolate a preto`,
+        label: `Esporada escura, de marrom-chocolate a preto.`,
       },
       {
         id: '2',
-        label: `Esporada de outras cores`,
+        label: `Esporada de outras cores.`,
       },
     ],
   },
   A07: {
-    question: 'Selecione a característica do chapéu:',
+    question: '07. Selecione a característica do chapéu:',
     choices: [
       {
         id: '1',
@@ -99,14 +104,15 @@ export const KeyAQuestions = {
     ],
   },
   A08: {
-    question: 'Selecione a característica das frutificações:',
+    question: '08. Selecione a característica do cogumelo:',
     choices: [
       {
         id: 'Coprinus comatus',
         label: `Frutificações cilíndricas-campanuladas, de cor branca, com escamas na superfcie. Estípite com anel móvel. 
           Píleo e lamelas liquescentes, carregando massa de esporos com aspecto de tinta, efêmeros, restando só o estípite manchado de preto. 
-          Muito difícil de conservar. Fungos comuns em jardins adubados ou potreiros, entre capim, com altura em torno de 10 a 15cm. Espécie comestível quando jovem. 
-          Outras espécies de menor porte, sem anel, ocorrem sobre madeira fortemente decomposta, em matas, e sobre esterco de animais herbívoros, em lugares abertos.`,
+          Muito difícil de conservar. Fungos comuns em jardins adubados ou potreiros, entre capim, com altura em torno de 10 a 15cm. 
+          Espécie comestível quando jovem. Outras espécies de menor porte, sem anel, ocorrem sobre madeira fortemente decomposta, em matas, 
+          e sobre esterco de animais herbívoros, em lugares abertos.`,
       },
       {
         id: 'Panaeolus antillarum',
@@ -116,7 +122,7 @@ export const KeyAQuestions = {
     ],
   },
   A09: {
-    question: 'Selecione a característica do chapéu:',
+    question: '09. Selecione a característica do cogumelo:',
     choices: [
       {
         id: 'Psilocybe cubensis',
@@ -132,7 +138,7 @@ export const KeyAQuestions = {
     ],
   },
   A10: {
-    question: 'Selecione a característica das lamelas:',
+    question: '10. Selecione a característica das lamelas e da esporada:',
     choices: [
       {
         id: '1',
@@ -145,7 +151,7 @@ export const KeyAQuestions = {
     ],
   },
   A11: {
-    question: 'Selecione a característica das lamelas:',
+    question: '11. Selecione a característica das lamelas e do estípite:',
     choices: [
       {
         id: '1',
@@ -158,7 +164,7 @@ export const KeyAQuestions = {
     ],
   },
   A12: {
-    question: 'Selecione a característica do cogumelo:',
+    question: '12. Selecione a característica do cogumelo:',
     choices: [
       {
         id: 'Amanita muscaria',
@@ -175,13 +181,13 @@ export const KeyAQuestions = {
       },
       {
         id: 'Chlorophyllum molybdites',
-        label: `Uma espécie muito semelhante à anterior, com lamelas brancas quando jovem, mas tornando-se verde-claras ao amadurecerem os esporos (esporada verde). 
-          Crescem em pequenos grupos, geralmente em jardins. Tóxica.`,
+        label: `Uma espécie muito semelhante à anterior, com lamelas brancas quando jovem, mas tornando-se verde-claras ao amadurecerem os esporos 
+          (esporada verde). Crescem em pequenos grupos, geralmente em jardins. Tóxica.`,
       },
     ],
   },
   A13: {
-    question: 'Selecione a característica da base do estípite:',
+    question: '13. Selecione a característica da base do estípite:',
     choices: [
       {
         id: 'Volvariella spp.',
@@ -194,7 +200,7 @@ export const KeyAQuestions = {
     ],
   },
   A14: {
-    question: 'Selecione a característica das lamelas:',
+    question: '14. Selecione a característica das lamelas:',
     choices: [
       {
         id: '1',
@@ -207,13 +213,13 @@ export const KeyAQuestions = {
     ],
   },
   A15: {
-    question: 'Selecione a característica do cogumelo:',
+    question: '15. Selecione a característica do cogumelo:',
     choices: [
       {
         id: 'Lactarius deliciosus',
         label: `Esporada cor-de-canela. Corpos frutíferos quebradiços. 
-          Chapéu com 6 a 12cm de diâmetro, apresentando uma depressão central e margem encurvada quando jovem,  finalmente infundibuliforme com os bordos erguidos. 
-          Superfície do píleo com zonas concêntricas esverdeadas. Presença de látex alaranjado, tornando-se verde. Em bosques de Pinus. Espécie comestível.`,
+          Chapéu com 6 a 12cm de diâmetro, apresentando uma depressão central e margem encurvada quando jovem, finalmente infundibuliforme com os bordos erguidos. 
+          Superfície do píleo com zonas concêntricas esverdeadas. Presença de látex alaranjado, tornando-se verde. Encontrados em bosques de Pinus. Espécie comestível.`,
       },
       {
         id: 'Paxillus involutus',
@@ -224,7 +230,7 @@ export const KeyAQuestions = {
     ],
   },
   A16: {
-    question: 'Selecione a característica do cogumelo:',
+    question: '16. Selecione a característica da esporada:',
     choices: [
       {
         id: 'Gymnopilus pampeanus',
@@ -239,7 +245,7 @@ export const KeyAQuestions = {
     ],
   },
   A17: {
-    question: 'Selecione a característica das lamelas:',
+    question: '17. Selecione a característica das lamelas:',
     choices: [
       {
         id: '1',
@@ -252,7 +258,7 @@ export const KeyAQuestions = {
     ],
   },
   A18: {
-    question: 'Selecione a característica dos corpos frutíferos:',
+    question: '18. Selecione a característica dos corpos frutíferos e do chapéu:',
     choices: [
       {
         id: 'Oudemansiella canarii',
@@ -263,12 +269,12 @@ export const KeyAQuestions = {
       {
         id: 'Tricholoma giganteum',
         label: `Corpos frutíferos muito grandes, em torno de 30 a 50cm de diâmetro e de altura. 
-          Superfície dos chapéus esbranquiçada, lisa. Sem anel no pé. Crescem sobre o solo em pequenos grupos. Comestível.`,
+          Superfície do chapéu esbranquiçada, lisa. Sem anel no pé. Crescem sobre o solo em pequenos grupos. Comestível.`,
       },
     ],
   },
   A19: {
-    question: 'Selecione a característica dos corpos frutíferos:',
+    question: '19. Selecione a característica dos corpos frutíferos:',
     choices: [
       {
         id: 'Tricholoma nudum',
@@ -277,12 +283,12 @@ export const KeyAQuestions = {
       },
       {
         id: '2',
-        label: `Corpos frutiferos menores.`,
+        label: `Corpos frutíferos menores.`,
       },
     ],
   },
   A20: {
-    question: 'Selecione a característica do cogumelo:',
+    question: '20. Selecione a característica do cogumelo:',
     choices: [
       {
         id: 'Laccaria fraterna',
@@ -297,7 +303,7 @@ export const KeyAQuestions = {
     ],
   },
   A21: {
-    question: 'Selecione a característica do cogumelo:',
+    question: '21. Selecione a característica do cogumelo:',
     choices: [
       {
         id: 'Marasmius spp.',
@@ -306,13 +312,13 @@ export const KeyAQuestions = {
       },
       {
         id: '2',
-        label: `Chapéu coriáceo de cores não chamativas (castanho claro a escuro) aveludado, liso ou com feixes de pelos.
+        label: `Chapéu coriáceo de cores não chamativas (castanho-claro a escuro) aveludado, liso ou com feixes de pelos.
           Lamelas próximas entre si, decorrentes. Estípite rígido aveludado. Fungos degradadores de madeira.`,
       },
     ],
   },
   A22: {
-    question: 'Selecione a característica do cogumelo:',
+    question: '22. Selecione a característica do pseudo-esclerócio e do chapéu:',
     choices: [
       {
         id: 'Lentinus velutinus',
@@ -326,7 +332,7 @@ export const KeyAQuestions = {
     ],
   },
   A23: {
-    question: 'Selecione a característica dos píleos:',
+    question: '23. Selecione a característica dos píleos:',
     choices: [
       {
         id: 'Stiptophyllum erubescens',
