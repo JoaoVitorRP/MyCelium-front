@@ -5,12 +5,14 @@ import { KeyAQuestions } from './KeyAForm/KeyAQuestions';
 import { KeyBQuestions } from './KeyBForm/KeyBQuestions';
 import { KeyCQuestions } from './KeyCForm/KeyCQuestions';
 import { KeyDQuestions } from './KeyDForm/KeyDQuestions';
+import { KeyEQuestions } from './KeyEForm/KeyEQuestions';
 
 const keyQuestions = {
   A: { ...KeyAQuestions },
   B: { ...KeyBQuestions },
   C: { ...KeyCQuestions },
   D: { ...KeyDQuestions },
+  E: { ...KeyEQuestions },
 };
 
 export default function Question({ questionName, selectedAnswer, handleCheckboxChange }) {

@@ -11,7 +11,7 @@ export default function CheckboxInput({ label, id, name, isSelected, handleCheck
       <IconContext.Provider value={{ className: 'check-icon' }}>
         <MdCheckBox />
       </IconContext.Provider>
-      <span>{label}</span>
+      {label}
     </Label>
   );
 }
@@ -37,6 +37,10 @@ const Label = styled.label`
 
     font-size: 30px;
     color: ${(props) => (props.isSelected ? `${RED}` : `${LIGHT_GRAY}`)};
+  }
+
+  i {
+    font-style: italic;
   }
 `;
 

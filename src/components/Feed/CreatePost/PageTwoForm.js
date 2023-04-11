@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { InputContainer } from '../../Form/InputContainer';
 import KeySelectorForm from './KeySelectorForm';
 import { useEffect, useRef, useState } from 'react';
-import { COLORS } from '../../../services/Constants/colors';
 import KeyAForm from './KeyAForm';
 import { Label } from '../../Form/Label';
 import { Button } from '../../Form/Button';
 import KeyBForm from './KeyBForm';
 import KeyCForm from './KeyCForm';
 import KeyDForm from './KeyDForm';
+import KeyEForm from './KeyEForm';
+import { COLORS } from '../../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY } = COLORS;
 
 export default function PageTwoForm() {
@@ -64,7 +65,7 @@ export default function PageTwoForm() {
 
       {selectedKey === 'D' && <KeyDForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
-      {selectedKey === 'E' && <></>}
+      {selectedKey === 'E' && <KeyEForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
       {selectedKey === 'F' && <></>}
 
