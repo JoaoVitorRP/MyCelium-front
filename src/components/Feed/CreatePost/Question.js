@@ -4,8 +4,14 @@ import { Label } from '../../Form/Label';
 import { KeyAQuestions } from './KeyAForm/KeyAQuestions';
 import { KeyBQuestions } from './KeyBForm/KeyBQuestions';
 import { KeyCQuestions } from './KeyCForm/KeyCQuestions';
+import { KeyDQuestions } from './KeyDForm/KeyDQuestions';
 
-const keyQuestions = { A: { ...KeyAQuestions }, B: { ...KeyBQuestions }, C: { ...KeyCQuestions } };
+const keyQuestions = {
+  A: { ...KeyAQuestions },
+  B: { ...KeyBQuestions },
+  C: { ...KeyCQuestions },
+  D: { ...KeyDQuestions },
+};
 
 export default function Question({ questionName, selectedAnswer, handleCheckboxChange }) {
   const keyName = questionName[0];

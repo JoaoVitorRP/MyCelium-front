@@ -8,6 +8,7 @@ import { Label } from '../../Form/Label';
 import { Button } from '../../Form/Button';
 import KeyBForm from './KeyBForm';
 import KeyCForm from './KeyCForm';
+import KeyDForm from './KeyDForm';
 const { FONT_BLACK, FONT_GRAY } = COLORS;
 
 export default function PageTwoForm() {
@@ -61,7 +62,7 @@ export default function PageTwoForm() {
 
       {selectedKey === 'C' && <KeyCForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
-      {selectedKey === 'D' && <></>}
+      {selectedKey === 'D' && <KeyDForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
       {selectedKey === 'E' && <></>}
 
