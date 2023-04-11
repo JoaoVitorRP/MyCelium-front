@@ -18,7 +18,7 @@ export const KeyBQuestions = {
       {
         id: 'Suillus granulatus',
         label: `Corpos frutíferos com chapéu. Lado superior amarelo, viscoso. Lado inferior com poros (tubos). 
-            Estípite (pé) robusto, sem véu parcial e sem anel. Fungo micorrízico com Pinus. Espécie comestível.`,
+          Estípite (pé) robusto, sem véu parcial e sem anel. Fungo micorrízico com Pinus. Espécie comestível.`,
       },
       {
         id: 'Suillus luteus',
@@ -40,14 +40,14 @@ export const KeyBQuestions = {
       {
         id: '1',
         label: `Corpos frutíferos em estromas estipitados que nascem de esclerócios duros pretos. Estípite mais ou menos filamentoso. 
-            Cabeça pequena (poucos milímetros), carnosa, frágil, finalmente pontuada (ostíolos dos peritécios). Fungos parasitas.`,
+          Cabeça pequena (poucos milímetros), carnosa, frágil, finalmente pontuada (ostíolos dos peritécios). Fungos parasitas.`,
       },
       {
         id: '2',
         label: `Corpos frutíferos com estípite cilíndrico, grosso, de consistência esponjosa e na base a volva (resto do perídio). 
-            Cabeça maior (mais de 1cm), carnosa-deliquescente. Fungos não parasitas, efêmeros, com cheiro desagradável que atraem as moscas que disseminam os esporos. 
-            Estado juvenil em forma de ovo, que em corte longitudinal mostra a frutificação preformada protegida por uma camada gelatinosa subperidial, 
-            rodeada pelo perídio esbranquiçado (Phallales).`,
+          Cabeça maior (mais de 1cm), carnosa-deliquescente. Fungos não parasitas, efêmeros, com cheiro desagradável que atraem as moscas que disseminam os esporos. 
+          Estado juvenil em forma de ovo, que em corte longitudinal mostra a frutificação preformada protegida por uma camada gelatinosa subperidial, 
+          rodeada pelo perídio esbranquiçado (Phallales).`,
       },
     ],
   },
@@ -73,8 +73,7 @@ export const KeyBQuestions = {
       },
       {
         id: 'Dictyophora indusiata',
-        label: `Semelhante a anterior, porém com o estípite ecoberto por uma delicada rede pendente que sai de baixo da cabeça. 
-            Comestível quando jovem (ovo).`,
+        label: `Semelhante ao anterior, porém o estípite é coberto por uma delicada rede pendente que sai de baixo da cabeça. Comestível quando jovem (ovo).`,
       },
       {
         id: 'Simblum sphaerocephalum',
@@ -114,12 +113,12 @@ export const KeyBQuestions = {
       {
         id: 'Poronia oedipus',
         label: `Estromas capitados, resistentes, escuros. 
-            Cabeça em forma de disco com pontuações (ostíolos dos peritécios) pretas sobre fundo claro, no lado superior. Encontrado sobre esterco.`,
+          Cabeça em forma de disco com pontuações (ostíolos dos peritécios) pretas sobre fundo claro, no lado superior. Encontrados sobre esterco.`,
       },
       {
         id: 'Xylaria comosa',
         label: `Estromas capitados. Cabeça mais ou menos cilíndrica, finamente pontuada (ostíolos dos peritécios), com projeções apicais estéreis furcadas. 
-            Encontrado sobre madeira.`,
+          Encontrados sobre madeira.`,
       },
     ],
   },
@@ -129,7 +128,7 @@ export const KeyBQuestions = {
       {
         id: 'Tulostoma berteroanum',
         label: `Corpos frutíferos com cabeça marrom, de consistência papirácea, com um poro (ostíolo) apical. 
-            Estípite (pé) duas a três vezes mais longo que o diâmetro da cabeça, cilíndrico, delgado resistente, frequentemente enterrado. Encontrado sobre terra.`,
+          Estípite (pé) duas a três vezes mais longo que o diâmetro da cabeça, cilíndrico, delgado resistente, frequentemente enterrado. Encontrados sobre terra.`,
       },
       {
         id: '2',
@@ -155,8 +154,7 @@ export const KeyBQuestions = {
     choices: [
       {
         id: 'Polyporus arcularius',
-        label: `Corpos frutíferos coriáceos, marrons. Superfície do píleo lisa. Altura do estípite mais ou menos igual ao diâmetro do chapéu. 
-            Encontrados sobre madeira.`,
+        label: `Corpos frutíferos coriáceos, marrons. Superfície do píleo lisa. Altura do estípite mais ou menos igual ao diâmetro do chapéu. Encontrados sobre madeira.`,
       },
       {
         id: 'Filoboletus gracilis',
@@ -170,8 +168,8 @@ export const KeyBQuestions = {
       {
         id: 'Amauroderma sp.',
         label: `Estípite amarronzado (tabaco) opaco, rígido, comprido, duas vezes o diâmetro do chapéu, sem contar a parte enterrada no solo. 
-            Chapéu com cerca de 3cm de diâmetro (às vezes, concrescidos), amarronzado, concentricamente zonado. 
-            Lado inferior do chapéu com poros circulares, acinzentados.`,
+          Chapéu com cerca de 3cm de diâmetro (às vezes, concrescidos), amarronzado, concentricamente zonado. 
+          Lado inferior do chapéu com poros circulares, acinzentados.`,
       },
       {
         id: '2',
@@ -185,14 +183,14 @@ export const KeyBQuestions = {
       {
         id: 'Polyporus leprieurii',
         label: `Estípite preto. Píleo espatulado, superfície superior de cor marrom-escuro, violáceo a quase preto, brilhante, 2 a 5cm de diâmetro. 
-            Lado inferior com poros acinzentados. Encontrados sobre madeira.`,
+          Lado inferior com poros acinzentados. Encontrados sobre madeira.`,
       },
       {
         id: 'Ganoderma lucidum',
         label: `Estípite avermelhado a marrom-violáceo, igual à superfície superior do chapéu, brilhantes como se fossem envernizados. 
-            Frutificações normalmente elegantes quando apresentam estípite longo. Tamanho variável de 5 a 15cm de largura. 
-            Superfície inferior com poros circulares, esbranquiçados. Costumam concrescer, atingindo tamanhos de até 40cm. 
-            Utilizado para a fabricação de medicamentos.`,
+          Frutificações normalmente elegantes quando apresentam estípite longo. Tamanho variável de 5 a 15cm de largura. 
+          Superfície inferior com poros circulares, esbranquiçados. Costumam concrescer, atingindo tamanhos de até 40cm. 
+          Utilizado para a fabricação de medicamentos.`,
       },
     ],
   },

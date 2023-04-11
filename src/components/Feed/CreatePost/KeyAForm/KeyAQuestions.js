@@ -117,7 +117,7 @@ export const KeyAQuestions = {
       {
         id: 'Panaeolus antillarum',
         label: `Frutificações hemisféricas, de cor branca, geralmente lisas, brilhantes. Estípite sem anel. 
-          Não se liquefazem e conservam a forma quando adultas e secas ao sol. Comum sobre esterco em potreiros e campos de pastoreio. Espécie comestível.`,
+          Não se liquefazem e conservam a forma quando adultas e secas ao sol. Comuns sobre esterco em potreiros e campos de pastoreio. Espécie comestível.`,
       },
     ],
   },
@@ -127,7 +127,7 @@ export const KeyAQuestions = {
       {
         id: 'Psilocybe cubensis',
         label: `Chapéu de cor palha, tornando-se azul por pressão. Estípite com anel membranáceo. Altura até 10cm. 
-          Sobre esterco de bovinos e equinos. Fungos alucinógenos.`,
+          Encontrados sobre esterco de bovinos e equinos. Fungos alucinógenos.`,
       },
       {
         id: 'Agaricus arvensis',
@@ -191,11 +191,11 @@ export const KeyAQuestions = {
     choices: [
       {
         id: 'Volvariella spp.',
-        label: `Base do estípite com volva. Sobre madeira ou no chão.`,
+        label: `Base do estípite com volva. Encontrados sobre madeira ou no chão.`,
       },
       {
         id: 'Pluteus spp.',
-        label: `Base do estípite sem volva. Sobre madeira.`,
+        label: `Base do estípite sem volva. Encontrados sobre madeira.`,
       },
     ],
   },
@@ -341,7 +341,7 @@ export const KeyAQuestions = {
       {
         id: 'Lentinus crinitus',
         label: `Píleos não concrescidos, de 2 a 5cm de diâmetro, algo deprimidos no centro, estípite curto (muito comprido quando crescem em troncos enterrados). 
-          Superfície do chapéu com feixes de pelos de 1mm de comprimento. Comum sobre tocos e troncos caídos.`,
+          Superfície do chapéu com feixes de pelos de 1mm de comprimento. Comuns sobre tocos e troncos caídos.`,
       },
     ],
   },
