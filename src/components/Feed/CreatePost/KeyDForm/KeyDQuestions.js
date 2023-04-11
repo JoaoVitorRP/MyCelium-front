@@ -31,17 +31,17 @@ export const KeyDQuestions = {
       {
         id: 'Ramaria toxica',
         label: `Frutificações muito ramificadas, extremidades das ramificações livres. Quando frescas, são amarelas. 
-            Abundantes no outono em matas de eucaliptos. Espécie comestível quando cozida. Tóxica e letal para o gado.`,
+          Abundantes no outono em matas de eucaliptos. Espécie comestível quando cozida. Tóxica e letal para o gado.`,
       },
       {
         id: 'Linderiella columnata',
         label: `Frutificações com poucas ramificações (de 2 a 5), esponjosas, unidas no ápice, e volva na base. Cor salmão, odor desagradável, não comestível. 
-            Frutificação jovem em forma de ovo.`,
+          Frutificação jovem em forma de ovo.`,
       },
       {
         id: 'Aseröe rubra',
         label: `Semelhante ao anterior, porém com maior número de ramificações, de cor vermelho-vivo, e finalmente livres no ápice e na base a volva. 
-            Frutificação jovem em forma de ovo e, como no caso anterior, pertencente às Phallales.`,
+          Frutificação jovem em forma de ovo e, como no caso anterior, pertencente às Phallales.`,
       },
     ],
   },
