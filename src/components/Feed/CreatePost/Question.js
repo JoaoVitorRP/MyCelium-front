@@ -3,8 +3,9 @@ import { InputContainer } from '../../Form/InputContainer';
 import { Label } from '../../Form/Label';
 import { KeyAQuestions } from './KeyAForm/KeyAQuestions';
 import { KeyBQuestions } from './KeyBForm/KeyBQuestions';
+import { KeyCQuestions } from './KeyCForm/KeyCQuestions';
 
-const keyQuestions = { A: { ...KeyAQuestions }, B: { ...KeyBQuestions } };
+const keyQuestions = { A: { ...KeyAQuestions }, B: { ...KeyBQuestions }, C: { ...KeyCQuestions } };
 
 export default function Question({ questionName, selectedAnswer, handleCheckboxChange }) {
   const keyName = questionName[0];
