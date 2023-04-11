@@ -6,6 +6,7 @@ import { COLORS } from '../../../services/Constants/colors';
 import KeyAForm from './KeyAForm';
 import { Label } from '../../Form/Label';
 import { Button } from '../../Form/Button';
+import KeyBForm from './KeyBForm';
 const { FONT_BLACK, FONT_GRAY } = COLORS;
 
 export default function PageTwoForm() {
@@ -39,7 +40,6 @@ export default function PageTwoForm() {
     const filteredSelectedAnswersObject = Object.fromEntries(filteredSelectedAnswers);
 
     setSelectedAnswer({ ...filteredSelectedAnswersObject, [name]: value });
-    console.log({ ...filteredSelectedAnswersObject, [name]: value });
   }
 
   return (
@@ -56,7 +56,7 @@ export default function PageTwoForm() {
 
       {selectedKey === 'A' && <KeyAForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
-      {selectedKey === 'B' && <></>}
+      {selectedKey === 'B' && <KeyBForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
       {selectedKey === 'C' && <></>}
 
