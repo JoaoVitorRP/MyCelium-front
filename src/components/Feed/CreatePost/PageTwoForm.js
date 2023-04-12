@@ -9,6 +9,7 @@ import KeyBForm from './KeyBForm';
 import KeyCForm from './KeyCForm';
 import KeyDForm from './KeyDForm';
 import KeyEForm from './KeyEForm';
+import KeyFForm from './KeyFForm';
 import { COLORS } from '../../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY } = COLORS;
 
@@ -67,7 +68,7 @@ export default function PageTwoForm() {
 
       {selectedKey === 'E' && <KeyEForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
-      {selectedKey === 'F' && <></>}
+      {selectedKey === 'F' && <KeyFForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
       {species && (
         <InputContainer>
