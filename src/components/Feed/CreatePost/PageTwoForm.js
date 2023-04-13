@@ -19,10 +19,15 @@ export default function PageTwoForm() {
   const [species, setSpecies] = useState();
 
   const inputRef = useRef();
+  const initialRef = useRef();
 
   useEffect(() => {
-    inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [selectedAnswer]);
+    if (Object.keys(selectedAnswer).length === 0 && !selectedKey) {
+      return initialRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    return inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [selectedKey, selectedAnswer]);
 
   useEffect(() => {
     setSelectedAnswer({});
@@ -48,6 +53,8 @@ export default function PageTwoForm() {
 
   return (
     <>
+      <ScrollDiv ref={initialRef} />
+
       <InputContainer>
         <Title>Esse formulário irá te guiar na classificação da espécie de fungo que desejas postar!</Title>
         <Subtitle>

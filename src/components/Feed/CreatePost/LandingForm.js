@@ -5,12 +5,12 @@ import { StyledForm } from '../../Form/Form';
 import { TextArea } from '../../Form/TextArea';
 import CheckboxInput from '../../Form/CheckboxInput';
 import ImageInput from '../../Form/ImageInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../Form/Button';
 import { ErrorMessage } from '../../Form/ErrorMessage';
 import { useRef } from 'react';
-import { COLORS } from '../../../services/Constants/colors';
 import { InputContainer } from '../../Form/InputContainer';
+import { COLORS } from '../../../services/Constants/colors';
 const { RED } = COLORS;
 
 export default function LandingForm({ setPage }) {
@@ -19,16 +19,28 @@ export default function LandingForm({ setPage }) {
   const [fileError, setFileError] = useState(false);
 
   const inputRef = useRef();
+  const divRef = useRef();
+  const initialRef = useRef();
+
+  useEffect(() => {
+    if (!selectedInput) {
+      return initialRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    return divRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [selectedInput]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (!selectedFile) {
-      inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
       return setFileError(true);
     }
 
-    setPage(2);
+    if (selectedInput === 'no') {
+      return setPage(2);
+    }
   }
 
   function handleCheckboxChange(e) {
@@ -39,6 +51,8 @@ export default function LandingForm({ setPage }) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
+      <ScrollDiv ref={initialRef} />
+
       <InputContainer ref={inputRef} error={fileError}>
         <ImageInput
           selectedFile={selectedFile}
@@ -81,7 +95,9 @@ export default function LandingForm({ setPage }) {
         />
       </InputContainer>
 
-      <Button type="submit">Próximo</Button>
+      <Button type="submit">{selectedInput === 'no' ? 'Ir para o formulário' : 'Postar'}</Button>
+
+      <ScrollDiv ref={divRef} />
     </StyledForm>
   );
 }
@@ -107,4 +123,9 @@ const StyledInput = styled(Input)`
   margin-bottom: 10px;
 
   font-style: italic;
+`;
+
+const ScrollDiv = styled.div`
+  width: 0;
+  height: 0;
 `;
