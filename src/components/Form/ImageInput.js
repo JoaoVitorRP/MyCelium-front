@@ -15,11 +15,13 @@ export default function ImageInput({ selectedFile, setSelectedFile, label, loadi
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined);
+      setImageName('');
       return;
     }
 
     const objectURL = URL.createObjectURL(selectedFile);
     setPreview(objectURL);
+    setImageName(selectedFile.name);
 
     return () => URL.revokeObjectURL(objectURL);
   }, [selectedFile]);
