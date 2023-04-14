@@ -3,34 +3,58 @@ import { Input } from '../../Form/Input';
 import { Label } from '../../Form/Label';
 import { StyledForm } from '../../Form/Form';
 import { TextArea } from '../../Form/TextArea';
-import CheckboxInput from '../../Form/CheckboxInput';
 import ImageInput from '../../Form/ImageInput';
 import { useEffect, useState } from 'react';
 import { Button } from '../../Form/Button';
 import { ErrorMessage } from '../../Form/ErrorMessage';
 import { useRef } from 'react';
 import { InputContainer } from '../../Form/InputContainer';
+import useCreatePost from '../../../hooks/api/useCreatePost';
+import LoadingDots from '../../Form/Loading';
 import { COLORS } from '../../../services/Constants/colors';
+import { toast } from 'react-toastify';
 const { RED } = COLORS;
 
-export default function LandingForm({ setPage }) {
-  const [selectedFile, setSelectedFile] = useState();
-  const [selectedInput, setSelectedInput] = useState();
+const convertBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+};
+
+export default function LandingForm({
+  selectedFile,
+  setSelectedFile,
+  setPage,
+  postData,
+  setPostData,
+  handleInputChange,
+}) {
   const [fileError, setFileError] = useState(false);
+
+  const { createPost, createPostLoading } = useCreatePost();
 
   const inputRef = useRef();
   const divRef = useRef();
   const initialRef = useRef();
 
   useEffect(() => {
-    if (!selectedInput) {
+    if (postData.species.length === 0) {
       return initialRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     return divRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [selectedInput]);
+  }, [postData.species]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (!selectedFile) {
@@ -38,15 +62,30 @@ export default function LandingForm({ setPage }) {
       return setFileError(true);
     }
 
-    if (selectedInput === 'no') {
-      return setPage(2);
+    const base64 = await convertBase64(selectedFile);
+
+    const formData = new FormData();
+
+    formData.append('image', base64);
+    formData.append('species', postData.species);
+
+    if (formData.description?.length !== 0) {
+      formData.append('description', postData.description);
     }
-  }
 
-  function handleCheckboxChange(e) {
-    const { value } = e.target;
+    try {
+      await createPost(formData);
+    } catch (err) {
+      inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      return setFileError(true);
+    }
 
-    setSelectedInput(value);
+    toast.success('Post feito com sucesso!');
+    setSelectedFile();
+    setPostData({
+      description: '',
+      species: '',
+    });
   }
 
   return (
@@ -61,41 +100,37 @@ export default function LandingForm({ setPage }) {
           loading={false}
           setFileError={setFileError}
         />
-        {fileError && <StyledErrorMessage>Por favor, insira uma imagem!</StyledErrorMessage>}
+        {fileError && <StyledErrorMessage>Por favor, insira uma imagem de até 25MB!</StyledErrorMessage>}
       </InputContainer>
 
       <InputContainer>
-        <Label>Insira uma descrição (opcional):</Label>
-        <TextArea placeholder="Escreva algo sobre a foto (até 3000 caracteres)" maxLength={3000} />
+        <Label htmlFor="picture">Insira uma descrição (opcional):</Label>
+        <TextArea
+          id="description"
+          name="description"
+          placeholder="Escreva algo sobre a foto (até 3000 caracteres)"
+          maxLength={3000}
+          value={postData.description}
+          onChange={handleInputChange}
+        />
       </InputContainer>
 
       <InputContainer>
-        <Label>Você sabe a qual espécie esse fungo pertence?</Label>
+        <Label>Insira a espécie do seu fungo:</Label>
 
-        <CheckboxInput
-          label="Sim, já sei a espécie!"
-          id="yes"
-          name="fungi-species"
-          isSelected={selectedInput === 'yes'}
-          handleCheckboxChange={handleCheckboxChange}
+        <StyledInput
+          id="species"
+          name="species"
+          placeholder="Cogumelus cogumelus"
+          value={postData.species}
+          onChange={handleInputChange}
+          required
         />
-        {selectedInput === 'yes' && (
-          <SpeciesInputContainer>
-            <StyledLabel htmlFor="species">Insira a espécie aqui:</StyledLabel>
-            <StyledInput id="species" placeholder="Cogumelus cogumelus" required />
-          </SpeciesInputContainer>
-        )}
 
-        <CheckboxInput
-          label="Não, preciso de ajuda!"
-          id="no"
-          name="fungi-species"
-          isSelected={selectedInput === 'no'}
-          handleCheckboxChange={handleCheckboxChange}
-        />
+        <HelpLink onClick={() => setPage(2)}>Não sei a espécie, necessito de ajuda!</HelpLink>
       </InputContainer>
 
-      <Button type="submit">{selectedInput === 'no' ? 'Ir para o formulário' : 'Postar'}</Button>
+      <Button type="submit">{createPostLoading ? <LoadingDots /> : 'Postar'}</Button>
 
       <ScrollDiv ref={divRef} />
     </StyledForm>
@@ -106,16 +141,13 @@ const StyledErrorMessage = styled(ErrorMessage)`
   margin: 10px 0 0 0;
 `;
 
-const SpeciesInputContainer = styled.div`
-  display: flex;
-`;
+const HelpLink = styled.span`
+  margin-top: 5px;
+  cursor: pointer;
 
-const StyledLabel = styled(Label)`
-  margin: 0 15px 0 0;
-
-  font-size: 18px;
-  line-height: 38px;
-  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline;
   color: ${RED};
 `;
 

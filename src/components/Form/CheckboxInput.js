@@ -7,7 +7,7 @@ const { FONT_BLACK, LIGHT_GRAY, RED } = COLORS;
 export default function CheckboxInput({ label, id, name, isSelected, handleCheckboxChange }) {
   return (
     <Label isSelected={isSelected}>
-      <Input type="radio" id={id} name={name} value={id} onChange={handleCheckboxChange} />
+      <Input type="radio" id={id} name={name} value={id} checked={isSelected} onChange={handleCheckboxChange} />
       <IconContext.Provider value={{ className: 'check-icon' }}>
         <MdCheckBox />
       </IconContext.Provider>

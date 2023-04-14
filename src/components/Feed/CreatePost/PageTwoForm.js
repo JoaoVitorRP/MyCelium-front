@@ -10,13 +10,13 @@ import KeyCForm from './KeyCForm';
 import KeyDForm from './KeyDForm';
 import KeyEForm from './KeyEForm';
 import KeyFForm from './KeyFForm';
+import { StyledForm } from '../../Form/Form';
 import { COLORS } from '../../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY } = COLORS;
 
-export default function PageTwoForm() {
+export default function PageTwoForm({ setPage, postData, setPostData }) {
   const [selectedKey, setSelectedKey] = useState();
   const [selectedAnswer, setSelectedAnswer] = useState({});
-  const [species, setSpecies] = useState();
 
   const inputRef = useRef();
   const initialRef = useRef();
@@ -31,7 +31,8 @@ export default function PageTwoForm() {
 
   useEffect(() => {
     setSelectedAnswer({});
-    setSpecies();
+    setPostData({ ...postData, species: '' });
+    // eslint-disable-next-line
   }, [selectedKey]);
 
   function handleCheckboxChange(e) {
@@ -39,9 +40,9 @@ export default function PageTwoForm() {
 
     const answerStringLength = 1;
     if (value.length > answerStringLength) {
-      setSpecies(value);
+      setPostData({ ...postData, species: value });
     } else {
-      setSpecies();
+      setPostData({ ...postData, species: '' });
     }
 
     const selectedAnswersArray = Object.entries(selectedAnswer);
@@ -52,7 +53,7 @@ export default function PageTwoForm() {
   }
 
   return (
-    <>
+    <StyledForm onSubmit={() => setPage(1)}>
       <ScrollDiv ref={initialRef} />
 
       <InputContainer>
@@ -77,18 +78,22 @@ export default function PageTwoForm() {
 
       {selectedKey === 'F' && <KeyFForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
-      {species && (
+      {postData.species?.length !== 0 && (
         <InputContainer>
           <Label>
-            A espécie é: <i>{species}</i>
+            Seu fungo é um: <i>{postData.species}</i>
           </Label>
-          <StyledButton>Sim, parece correto!</StyledButton>
-          <Button>Não, refazer o formulário!</Button>
+
+          <StyledButton type="submit">Sim, parece correto!</StyledButton>
+
+          <Button type="button" onClick={() => setSelectedKey()}>
+            Não, refazer o formulário!
+          </Button>
         </InputContainer>
       )}
 
       <ScrollDiv ref={inputRef} />
-    </>
+    </StyledForm>
   );
 }
 
