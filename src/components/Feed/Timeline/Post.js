@@ -5,7 +5,7 @@ import { COLORS } from '../../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY, LIGHT_GRAY, WHITE, RED } = COLORS;
 
 export default function Post({ postData }) {
-  const { description, image, users } = postData;
+  const { description, image, species, users } = postData;
   const { user, name, picture } = users;
 
   const [showFullText, setShowFullText] = useState(false);
@@ -40,9 +40,10 @@ export default function Post({ postData }) {
         )}
       </DescriptionContainer>
 
-      <Image>
+      <ImageContainer>
         <img src={image} alt="Post" />
-      </Image>
+      </ImageContainer>
+      <SpeciesContainer>{species}</SpeciesContainer>
     </Container>
   );
 }
@@ -100,7 +101,7 @@ const SeeMore = styled.span`
   color: ${RED};
 `;
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   width: 100%;
   background-color: ${LIGHT_GRAY};
   border-radius: 10px;
@@ -111,9 +112,29 @@ const Image = styled.div`
   display: flex;
   justify-content: center;
 
+  position: relative;
+
   img {
     max-width: 100%;
     max-height: 50vh;
     min-height: 30vh;
   }
+`;
+
+const SpeciesContainer = styled.div`
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  background-color: ${RED};
+  margin-top: -30px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: flex-end;
+
+  z-index: 1;
+
+  font-weight: 700;
+  font-style: italic;
+  color: ${WHITE};
 `;
