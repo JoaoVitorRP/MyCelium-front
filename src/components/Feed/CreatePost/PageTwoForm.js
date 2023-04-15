@@ -4,15 +4,18 @@ import KeySelectorForm from './KeySelectorForm';
 import { useEffect, useRef, useState } from 'react';
 import KeyAForm from './KeyAForm';
 import { Label } from '../../Form/Label';
-import { Button } from '../../Form/Button';
 import KeyBForm from './KeyBForm';
 import KeyCForm from './KeyCForm';
 import KeyDForm from './KeyDForm';
 import KeyEForm from './KeyEForm';
 import KeyFForm from './KeyFForm';
 import { StyledForm } from '../../Form/Form';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { COLORS } from '../../../services/Constants/colors';
-const { FONT_BLACK, FONT_GRAY } = COLORS;
+const { FONT_BLACK, FONT_GRAY, RED } = COLORS;
+
+const MySwal = withReactContent(Swal);
 
 export default function PageTwoForm({ setPage, postData, setPostData }) {
   const [selectedKey, setSelectedKey] = useState();
@@ -35,12 +38,33 @@ export default function PageTwoForm({ setPage, postData, setPostData }) {
     // eslint-disable-next-line
   }, [selectedKey]);
 
+  function dismissSwal() {
+    setSelectedKey();
+    MySwal.close();
+  }
+
   function handleCheckboxChange(e) {
     const { name, value } = e.target;
 
     const answerStringLength = 1;
     if (value.length > answerStringLength) {
       setPostData({ ...postData, species: value });
+
+      MySwal.fire({
+        title: (
+          <Label>
+            Seu fungo é um: <i>{value}</i>
+          </Label>
+        ),
+        icon: 'success',
+        confirmButtonText: 'Parece correto!',
+        confirmButtonColor: `${RED}`,
+        footer: <RetakeFormText onClick={dismissSwal}>Refazer o formulário</RetakeFormText>,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          return setPage(1);
+        }
+      });
     } else {
       setPostData({ ...postData, species: '' });
     }
@@ -78,20 +102,6 @@ export default function PageTwoForm({ setPage, postData, setPostData }) {
 
       {selectedKey === 'F' && <KeyFForm selectedAnswer={selectedAnswer} handleCheckboxChange={handleCheckboxChange} />}
 
-      {postData.species?.length !== 0 && (
-        <InputContainer>
-          <Label>
-            Seu fungo é um: <i>{postData.species}</i>
-          </Label>
-
-          <StyledButton type="submit">Sim, parece correto!</StyledButton>
-
-          <Button type="button" onClick={() => setSelectedKey()}>
-            Não, refazer o formulário!
-          </Button>
-        </InputContainer>
-      )}
-
       <ScrollDiv ref={inputRef} />
     </StyledForm>
   );
@@ -116,8 +126,13 @@ const Subtitle = styled.h2`
   }
 `;
 
-const StyledButton = styled(Button)`
-  margin: 10px 0;
+const RetakeFormText = styled.span`
+  cursor: pointer;
+
+  font-family: 'Roboto';
+  font-weight: 700;
+  text-decoration: underline;
+  color: ${RED};
 `;
 
 const ScrollDiv = styled.div`
