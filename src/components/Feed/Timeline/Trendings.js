@@ -3,16 +3,7 @@ import { MdTrendingUp } from 'react-icons/md';
 import { COLORS } from '../../../services/Constants/colors';
 const { FONT_BLACK, LIGHT_GRAY, WHITE } = COLORS;
 
-const TrendingSpecies = [
-  {
-    name: 'Hygrocybe spp.',
-  },
-  {
-    name: 'Amanita muscaria',
-  },
-];
-
-export default function Trendings() {
+export default function Trendings({ trendings }) {
   return (
     <Container>
       <Title>
@@ -23,10 +14,10 @@ export default function Trendings() {
       <LineDiv />
 
       <TrendingList>
-        {TrendingSpecies.map((species, index) => {
+        {trendings.map((trending, index) => {
           return (
             <li key={index}>
-              🍄 <span>{species.name}</span>
+              🍄 <span>{trending.species}</span>
             </li>
           );
         })}

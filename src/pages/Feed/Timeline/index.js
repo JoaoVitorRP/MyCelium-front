@@ -6,15 +6,17 @@ import Trendings from '../../../components/Feed/Timeline/Trendings';
 
 export default function PostContainer() {
   const [posts, setPosts] = useState([]);
+  const [trendings, setTrendings] = useState([]);
 
   const { getPosts } = useGetPosts();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const postsArray = await getPosts();
+        const postsAndTrendingsArray = await getPosts();
 
-        setPosts(postsArray);
+        setPosts(postsAndTrendingsArray.posts);
+        setTrendings(postsAndTrendingsArray.trendings);
       } catch (err) {
         console.log(err);
       }
@@ -32,7 +34,7 @@ export default function PostContainer() {
         })}
       </Container>
 
-      <Trendings />
+      <Trendings trendings={trendings} />
     </Main>
   );
 }
