@@ -2,11 +2,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ToastContainer } from 'react-toastify';
 import { UserProvider } from './contexts/userContext';
 import useToken from './hooks/useToken';
-import Feed from './layouts/Feed';
-import Timeline from './pages/Feed/Timeline';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Feed from './layouts/Feed';
+import Timeline from './pages/Feed/Timeline';
 import CreatePost from './pages/Feed/CreatePost';
+import Trendings from './pages/Feed/Trendings';
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
             >
               <Route path="timeline" element={<Timeline />} />
               <Route path="create-post" element={<CreatePost />} />
+              <Route path="trendings" element={<Trendings />} />
             </Route>
           </Routes>
         </Router>

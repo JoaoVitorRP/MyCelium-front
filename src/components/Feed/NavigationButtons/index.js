@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { AiFillHome } from 'react-icons/ai';
-import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
+import { MdTrendingUp, MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import { Link } from 'react-router-dom';
 import { NavigationButton } from './NavigationButton';
@@ -18,6 +18,15 @@ export default function NavigationButtons() {
             <AiFillHome />
           </IconContext.Provider>
           Home
+        </NavigationButton>
+      </Link>
+
+      <Link to="/feed/trendings">
+        <NavigationButton isActive={comparePathname('/feed/trendings')}>
+          <IconContext.Provider value={{ size: '20px' }}>
+            <MdTrendingUp />
+          </IconContext.Provider>
+          Em alta
         </NavigationButton>
       </Link>
 
