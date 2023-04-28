@@ -10,7 +10,7 @@ export default function useGetTrendings() {
     loading: getTrendingsLoading,
     error: getTrendingsError,
     act: getTrendings,
-  } = useAsync(() => postsApi.getTrendings(token), false);
+  } = useAsync((limit) => postsApi.getTrendings(limit, token), false);
 
   return {
     getTrendingsLoading,

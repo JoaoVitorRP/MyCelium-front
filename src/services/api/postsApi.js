@@ -10,8 +10,8 @@ export async function getPosts(token) {
   return response.data;
 }
 
-export async function getTrendings(token) {
-  const response = await api.get('/posts/trendings', {
+export async function getTrendings(limit, token) {
+  const response = await api.get(`/posts/trendings?limit=${limit}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

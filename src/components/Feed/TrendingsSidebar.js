@@ -15,7 +15,7 @@ export default function TrendingsSidebar() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const trendingsArray = await getTrendings();
+        const trendingsArray = await getTrendings(7);
 
         setTrendings(trendingsArray);
       } catch (err) {
