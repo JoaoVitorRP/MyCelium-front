@@ -8,6 +8,7 @@ import Feed from './layouts/Feed';
 import Timeline from './pages/Feed/Timeline';
 import CreatePost from './pages/Feed/CreatePost';
 import Trendings from './pages/Feed/Trendings';
+import Trending from './pages/Feed/Trending';
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
               <Route path="timeline" element={<Timeline />} />
               <Route path="create-post" element={<CreatePost />} />
               <Route path="trendings" element={<Trendings />} />
+              <Route path="trendings/:species" element={<Trending />} />
             </Route>
           </Routes>
         </Router>

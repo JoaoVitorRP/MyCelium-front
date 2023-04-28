@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Post from '../../../components/Feed/Timeline/Post';
+import Post from '../../../components/Feed/Post';
 import { useEffect, useState } from 'react';
 import useGetPosts from '../../../hooks/api/useGetPosts';
 import TrendingsSidebar from '../../../components/Feed/TrendingsSidebar';

@@ -10,6 +10,16 @@ export async function getPosts(token) {
   return response.data;
 }
 
+export async function getPostsBySpecies(species, token) {
+  const response = await api.get(`/posts/trendings/${species}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}
+
 export async function getTrendings(limit, token) {
   const response = await api.get(`/posts/trendings?limit=${limit}`, {
     headers: {

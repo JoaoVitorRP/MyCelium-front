@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import ProfilePicture from '../ProfilePicture';
+import ProfilePicture from './ProfilePicture';
 import { useState } from 'react';
-import { COLORS } from '../../../services/Constants/colors';
+import { COLORS } from '../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY, LIGHT_GRAY, WHITE, RED } = COLORS;
 
 export default function Post({ postData }) {
