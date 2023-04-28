@@ -10,6 +10,16 @@ export async function getPosts(token) {
   return response.data;
 }
 
+export async function getTrendings(token) {
+  const response = await api.get('/posts/trendings', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+}
+
 export async function createPost(formData, token) {
   const response = await api.post('/posts/', formData, {
     headers: {

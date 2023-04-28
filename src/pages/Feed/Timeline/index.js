@@ -2,21 +2,19 @@ import styled from 'styled-components';
 import Post from '../../../components/Feed/Timeline/Post';
 import { useEffect, useState } from 'react';
 import useGetPosts from '../../../hooks/api/useGetPosts';
-import Trendings from '../../../components/Feed/Timeline/Trendings';
+import TrendingsSidebar from '../../../components/Feed/TrendingsSidebar';
 
 export default function PostContainer() {
   const [posts, setPosts] = useState([]);
-  const [trendings, setTrendings] = useState([]);
 
   const { getPosts } = useGetPosts();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const postsAndTrendingsArray = await getPosts();
+        const postsArray = await getPosts();
 
-        setPosts(postsAndTrendingsArray.posts);
-        setTrendings(postsAndTrendingsArray.trendings);
+        setPosts(postsArray);
       } catch (err) {
         console.log(err);
       }
@@ -34,7 +32,7 @@ export default function PostContainer() {
         })}
       </Container>
 
-      <Trendings trendings={trendings} />
+      <TrendingsSidebar />
     </Main>
   );
 }

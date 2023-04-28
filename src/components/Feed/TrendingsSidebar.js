@@ -1,9 +1,32 @@
 import styled from 'styled-components';
 import { MdTrendingUp } from 'react-icons/md';
-import { COLORS } from '../../../services/Constants/colors';
+import { COLORS } from '../../services/Constants/colors';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import useGetTrendings from '../../hooks/api/useGetTrendings';
 const { FONT_BLACK, LIGHT_GRAY, WHITE } = COLORS;
 
-export default function Trendings({ trendings }) {
+export default function TrendingsSidebar() {
+  const [trendings, setTrendings] = useState([]);
+
+  const { getTrendings } = useGetTrendings();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const trendingsArray = await getTrendings();
+
+        setTrendings(trendingsArray);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchData();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Container>
       <Title>
@@ -17,7 +40,9 @@ export default function Trendings({ trendings }) {
         {trendings.map((trending, index) => {
           return (
             <li key={index}>
-              🍄 <span>{trending.species}</span>
+              <Link to={`/feed/trendings/${trending.species}`}>
+                🍄 <span>{trending.species}</span>
+              </Link>
             </li>
           );
         })}
@@ -73,6 +98,14 @@ const TrendingList = styled.ul`
   li {
     margin-bottom: 10px;
     cursor: pointer;
+
+    text-decoration: none;
+    color: inherit;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     :hover {
       span {
