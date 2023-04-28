@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ProfilePicture from './ProfilePicture';
 import { useState } from 'react';
 import { COLORS } from '../../services/Constants/colors';
+import { Link } from 'react-router-dom';
 const { FONT_BLACK, FONT_GRAY, LIGHT_GRAY, WHITE, RED } = COLORS;
 
 export default function Post({ postData }) {
@@ -43,7 +44,10 @@ export default function Post({ postData }) {
       <ImageContainer>
         <img src={image} alt="Post" />
       </ImageContainer>
-      <SpeciesContainer>{species}</SpeciesContainer>
+
+      <Link to={`/feed/trendings/${species}`}>
+        <SpeciesContainer>{species}</SpeciesContainer>
+      </Link>
     </Container>
   );
 }
@@ -60,6 +64,11 @@ const Container = styled.div`
   font-size: 2vh;
   line-height: 2.1vh;
   color: ${FONT_BLACK};
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const PostHeader = styled.header`
@@ -137,4 +146,10 @@ const SpeciesContainer = styled.div`
   font-weight: 700;
   font-style: italic;
   color: ${WHITE};
+
+  :hover {
+    cursor: pointer;
+
+    text-decoration: underline;
+  }
 `;
