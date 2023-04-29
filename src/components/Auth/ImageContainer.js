@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import mushroomGirl from '../../assets/images/girl-with-mushroom.jpg';
+import { device } from '../../services/Constants/breakpoints';
 
 export default function ImageContainer() {
   return (
@@ -15,20 +16,28 @@ export default function ImageContainer() {
 }
 
 const ImgContainer = styled.div`
-  width: calc(65% - 10px);
-  border-radius: 50px;
-  background-image: url(${mushroomGirl});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  margin-left: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  visibility: hidden;
+
+  @media ${device.desktop} {
+    width: calc(65% - 10px);
+    border-radius: 50px;
+    background-image: url(${mushroomGirl});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-left: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    visibility: visible;
+
+    position: relative;
+  }
 `;
 
 const CopyrightInfo = styled.footer`
-  position: fixed;
-  bottom: 30px;
-  right: 70px;
+  position: absolute;
+  bottom: 15px;
+  right: 50px;
 
   font-size: 12px;
   color: #8e8e8e;

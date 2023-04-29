@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { COLORS } from '../../services/Constants/colors';
-const { FONT_BLACK } = COLORS;
+const { FONT_BLACK, RED } = COLORS;
 
 export const ScreenRedirect = styled.div`
-  margin-top: 40px;
+  margin-top: 25px;
 
   font-family: 'Roboto';
   font-size: 16px;
@@ -13,7 +13,7 @@ export const ScreenRedirect = styled.div`
   a {
     font-weight: 700;
     line-height: 20px;
-    color: ${FONT_BLACK};
+    color: ${RED};
     white-space: nowrap;
   }
 `;

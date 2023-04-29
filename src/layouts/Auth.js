@@ -7,7 +7,7 @@ export default function Auth({ children }) {
   return (
     <Screen>
       <FormDiv>
-        <Logo height={80} fontSize={4} />
+        <Logo height={70} fontSize={3.5} />
         {children}
       </FormDiv>
       <ImageContainer />
