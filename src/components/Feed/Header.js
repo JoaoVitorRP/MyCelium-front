@@ -10,16 +10,30 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import DropdownMenu from './DropdownMenu';
 import { device } from '../../services/Constants/breakpoints';
+import { useEffect } from 'react';
 import { COLORS } from '../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY, WHITE, BEIGE } = COLORS;
 
 export default function Header() {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [dropdownActive, setDropdownActive] = useState(false);
 
   const navigate = useNavigate();
 
   const { userData } = useContext(UserContext);
   const { user } = userData;
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [screenWidth]);
 
   return (
     <>
@@ -29,7 +43,7 @@ export default function Header() {
           <Logo
             height="45"
             fontSize="2.5"
-            nameHidden={window.innerWidth <= 1024}
+            nameHidden={screenWidth <= 1024}
             onClick={() => navigate('/feed/timeline')}
           />
         </Link>
