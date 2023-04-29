@@ -4,6 +4,9 @@ import { MdTrendingUp, MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import { Link, matchPath } from 'react-router-dom';
 import { NavigationButton } from './NavigationButton';
+import { device } from '../../../services/Constants/breakpoints';
+import { COLORS } from '../../../services/Constants/colors';
+const { WHITE } = COLORS;
 
 export default function NavigationButtons() {
   const pathname = window.location.pathname;
@@ -35,7 +38,7 @@ export default function NavigationButtons() {
           <IconContext.Provider value={{ size: '20px' }}>
             <MdOutlineAddPhotoAlternate />
           </IconContext.Provider>
-          Criar post
+          Postar
         </NavigationButton>
       </Link>
     </ButtonsContainer>
@@ -43,9 +46,30 @@ export default function NavigationButtons() {
 }
 
 const ButtonsContainer = styled.div`
-  height: 100%;
-  background-color: transparent;
+  width: 100%;
+  height: 65px;
+  background-color: ${WHITE};
+  box-shadow: rgba(100, 100, 111, 0.2) 0px -7px 29px 0px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  a {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  @media ${device.desktop} {
+    width: auto;
+    height: auto;
+    height: 100%;
+    background-color: transparent;
+    box-shadow: none;
+
+    position: static;
+  }
 `;

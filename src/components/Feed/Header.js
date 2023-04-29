@@ -10,6 +10,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import DropdownMenu from './DropdownMenu';
 import { COLORS } from '../../services/Constants/colors';
+import { device } from '../../services/Constants/breakpoints';
 const { FONT_BLACK, FONT_GRAY, WHITE, BEIGE } = COLORS;
 
 export default function Header() {
@@ -25,7 +26,12 @@ export default function Header() {
       <BeigeDiv />
       <HeaderContainer>
         <Link to="/feed/timeline">
-          <Logo height="45" fontSize="2.5" onClick={() => navigate('/feed/timeline')} />
+          <Logo
+            height="45"
+            fontSize="2.5"
+            nameHidden={window.innerWidth <= 1024}
+            onClick={() => navigate('/feed/timeline')}
+          />
         </Link>
 
         <NavigationButtons />
@@ -83,10 +89,15 @@ const HeaderContainer = styled.header`
   a {
     text-decoration: none;
   }
+
+  @media ${device.desktop} {
+    padding: 12px 25px;
+  }
 `;
 
 const UserData = styled.div`
   height: 45px;
+  margin-right: -15px;
 
   display: flex;
   align-items: center;
@@ -131,4 +142,8 @@ const UserAndName = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  @media ${device.desktop} {
+    width: auto;
+  }
 `;

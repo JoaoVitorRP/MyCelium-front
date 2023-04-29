@@ -16,6 +16,7 @@ export default function Feed() {
 
 const StyledScreen = styled(Screen)`
   padding-top: 140px;
+  padding-bottom: 100px;
 `;
 
 const Main = styled.main`

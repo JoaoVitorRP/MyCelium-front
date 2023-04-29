@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import useGetTrendings from '../../hooks/api/useGetTrendings';
+import { device } from '../../services/Constants/breakpoints';
 const { FONT_BLACK, LIGHT_GRAY, WHITE } = COLORS;
 
 export default function TrendingsSidebar() {
@@ -60,8 +61,7 @@ const Container = styled.div`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-left: 25px;
 
-  display: flex;
-  flex-direction: column;
+  display: none;
 
   position: sticky;
   top: 140px;
@@ -69,6 +69,11 @@ const Container = styled.div`
 
   font-family: 'Roboto';
   color: ${FONT_BLACK};
+
+  @media ${device.desktop} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Title = styled.span`
