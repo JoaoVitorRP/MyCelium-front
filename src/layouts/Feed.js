@@ -16,7 +16,7 @@ export default function Feed() {
 }
 
 const StyledScreen = styled(Screen)`
-  padding: 140px 0 100px 0;
+  padding: 120px 0 100px 0;
 
   @media ${device.desktop} {
     padding: 140px 20px 32px 20px;

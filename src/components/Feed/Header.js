@@ -9,8 +9,8 @@ import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import DropdownMenu from './DropdownMenu';
-import { COLORS } from '../../services/Constants/colors';
 import { device } from '../../services/Constants/breakpoints';
+import { COLORS } from '../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY, WHITE, BEIGE } = COLORS;
 
 export default function Header() {
@@ -62,18 +62,24 @@ const BeigeDiv = styled.div`
   height: 40px;
   background-color: ${BEIGE};
 
+  display: none;
+
   position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
+
+  @media ${device.tablet} {
+    display: inherit;
+  }
 `;
 
 const HeaderContainer = styled.header`
-  width: calc(100% - 40px);
+  width: 100%;
   height: 85px;
   padding: 12px 25px;
   background-color: ${WHITE};
-  border-radius: 20px;
+
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin-bottom: 20px;
 
@@ -82,12 +88,20 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
 
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 0;
+  left: 0;
   z-index: 3;
 
   a {
     text-decoration: none;
+  }
+
+  @media ${device.tablet} {
+    width: calc(100% - 40px);
+    border-radius: 20px;
+
+    top: 20px;
+    left: 20px;
   }
 
   @media ${device.desktop} {
