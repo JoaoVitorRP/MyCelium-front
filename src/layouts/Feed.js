@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../components/Feed/Header';
 import { Screen } from '../components/Screen';
+import { device } from '../services/Constants/breakpoints';
 
 export default function Feed() {
   return (
@@ -15,8 +16,11 @@ export default function Feed() {
 }
 
 const StyledScreen = styled(Screen)`
-  padding-top: 140px;
-  padding-bottom: 100px;
+  padding: 140px 0 100px 0;
+
+  @media ${device.desktop} {
+    padding: 140px 20px 32px 20px;
+  }
 `;
 
 const Main = styled.main`

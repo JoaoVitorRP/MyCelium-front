@@ -3,6 +3,7 @@ import Post from '../../../components/Feed/Post';
 import { useEffect, useState } from 'react';
 import useGetPosts from '../../../hooks/api/useGetPosts';
 import TrendingsSidebar from '../../../components/Feed/TrendingsSidebar';
+import { device } from '../../../services/Constants/breakpoints';
 
 export default function PostContainer() {
   const [posts, setPosts] = useState([]);
@@ -38,11 +39,15 @@ export default function PostContainer() {
 }
 
 const Container = styled.div`
-  width: 450px;
+  width: 100%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
+
+  @media ${device.tablet} {
+    width: 450px;
+  }
 `;
 
 const Main = styled.main`

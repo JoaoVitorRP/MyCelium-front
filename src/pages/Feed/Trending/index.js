@@ -4,6 +4,7 @@ import Post from '../../../components/Feed/Post';
 import useGetPostsBySpecies from '../../../hooks/api/useGetPostsBySpecies';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { device } from '../../../services/Constants/breakpoints';
 import { COLORS } from '../../../services/Constants/colors';
 const { RED } = COLORS;
 
@@ -53,11 +54,15 @@ export default function Trending() {
 }
 
 const Container = styled.div`
-  width: 450px;
+  width: 100%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
+
+  @media ${device.tablet} {
+    width: 450px;
+  }
 `;
 
 const Main = styled.main`

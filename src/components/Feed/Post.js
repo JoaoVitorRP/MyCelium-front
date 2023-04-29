@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import ProfilePicture from './ProfilePicture';
 import { useState } from 'react';
-import { COLORS } from '../../services/Constants/colors';
 import { Link } from 'react-router-dom';
+import { COLORS } from '../../services/Constants/colors';
 const { FONT_BLACK, FONT_GRAY, LIGHT_GRAY, WHITE, RED } = COLORS;
 
 export default function Post({ postData }) {
@@ -53,16 +53,17 @@ export default function Post({ postData }) {
 }
 
 const Container = styled.div`
+  max-width: 450px;
   height: 100%;
-  padding: 2.2vh;
+  padding: 21px;
   background-color: ${WHITE};
   border-radius: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  margin-bottom: 4.5vh;
+  margin-bottom: 32px;
 
   font-family: 'Roboto';
-  font-size: 2vh;
-  line-height: 2.1vh;
+  font-size: 16px;
+  line-height: 18px;
   color: ${FONT_BLACK};
 
   a {
@@ -72,28 +73,28 @@ const Container = styled.div`
 `;
 
 const PostHeader = styled.header`
-  height: 6.3vh;
-  margin-bottom: 2.1vh;
+  height: 45px;
+  margin-bottom: 15px;
 
   display: flex;
   align-items: center;
 `;
 
 const UserAndName = styled.div`
-  margin-left: 1.3vh;
+  margin-left: 10px;
 
-  line-height: 2.2vh;
+  line-height: 18px;
 
   display: flex;
   flex-direction: column;
 
   b {
-    font-size: 2vh;
+    font-size: 16px;
     font-weight: 700;
   }
 
   p {
-    font-size: 1.7vh;
+    font-size: 14px;
     color: ${FONT_GRAY};
   }
 `;
@@ -114,7 +115,7 @@ const ImageContainer = styled.div`
   width: 100%;
   background-color: ${LIGHT_GRAY};
   border-radius: 10px;
-  margin-top: 2vh;
+  margin-top: 14px;
 
   overflow: hidden;
 
@@ -125,8 +126,8 @@ const ImageContainer = styled.div`
 
   img {
     max-width: 100%;
-    max-height: 50vh;
-    min-height: 30vh;
+    max-height: 360px;
+    min-height: 216px;
   }
 `;
 
